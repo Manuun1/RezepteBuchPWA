@@ -1,0 +1,14 @@
+.first_navbar{
+    background-color: rgb(247, 246, 244);
+}
+.second_navbar{
+    background-color: rgb(69, 170, 51);
+    color:rgb(247, 246, 244);
+}
+.search{
+    color: rgb(247, 246, 244);
+    margin-left: 1%;
+}
+.spacer{
+    flex: 1 1 auto;
+}
