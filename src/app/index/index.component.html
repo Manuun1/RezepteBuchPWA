@@ -4,7 +4,13 @@
     <img class="index_image" src="/assets/images/MainPageIcon.png" />
     <span class="spacer"></span>
     <div class="button_group">
-      <button mat-button class="contact_button" (click)="routeToDetailView(pb_entry)">
+      <button mat-button class="other_button" (click)="routeToRecipeView()">
+        Home
+      </button>
+      <button mat-button class="other_button" (click)="routeToDetailView()">
+        Zutaten
+      </button>
+      <button mat-button class="other_button" (click)="routeToDetailView(pb_entry)">
         Kontakt
       </button>
       <button mat-button class="basket_button" (click)="routeToDetailView(pb_entry)">

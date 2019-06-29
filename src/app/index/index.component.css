@@ -9,7 +9,7 @@
   display: inline-block;
   vertical-align: text-bottom;
 }
-.contact_button{
+.other_button{
     color: black;
     font-family: 'Cookie', cursive;
     font-size: 100%;
@@ -32,8 +32,8 @@
 .second_navbar_row {
   background-color: rgb(69, 170, 51);
   color: rgb(247, 246, 244);
-  font-family: 'Courgette', cursive;
-  font-size: 25px;
+  font-family: 'Cookie', cursive;
+  font-size: 30px;
 }
 .search {
   color: rgb(247, 246, 244);
