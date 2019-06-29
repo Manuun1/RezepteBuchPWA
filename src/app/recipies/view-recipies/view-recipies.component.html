@@ -1,11 +1,14 @@
+<div class="header_writing_div">
+  <h2><span class="header_writing">Unsere favourisierten Rezepte</span></h2>
+</div>
 <div class="css_grid">
   <mat-card class="recipe_card" *ngFor="let recipe of recipies; index as i">
     <mat-card-content class="material_card_content">
       <p>
         <img class="image_view" [src]="recipe.image" />
       </p>
-      <p>
-        <strong>{{ recipe.name }}</strong>
+      <p class="recipe_card_name">
+        {{ recipe.name }}
       </p>
     </mat-card-content>
     <mat-card-actions>
@@ -14,5 +17,4 @@
       </button>
     </mat-card-actions>
   </mat-card>
-  
 </div>

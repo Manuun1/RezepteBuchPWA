@@ -4,7 +4,30 @@
 }
 
 .recipe_card{
-  
+  font-family: 'Cookie', cursive;
+}
+.recipe_card_name{
+  font-size: 30px;
+}
+.header_writing_div{
+  margin-top: 5%;
+}
+h2 {
+  width: 100%; 
+  text-align: center; 
+  border-bottom: 1.5px solid grey; 
+  line-height: 0.1em;
+} 
+
+h2 span { 
+   background:rgb(247, 246, 244); 
+   padding:0 10px; 
+}
+
+.header_writing{
+  font-family: 'Amatic SC', cursive;
+  font-size: 40px;
+  text-align: center;
 }
 
 .css_grid {
