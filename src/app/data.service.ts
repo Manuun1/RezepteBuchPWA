@@ -4,7 +4,10 @@ import { Observable, of } from "rxjs";
 export interface recipe {
   name: string;
   ingredients: string[];
-  picture: string;
+  required_time: number;
+  description: string;
+  difficulty: string;//enumeration;
+  image: string;
 }
 
 export interface ingredient {
@@ -25,29 +28,108 @@ const Categories: category[] = [
 
 const Recipies: recipe[] = [
   {
-    name: "Linsensuppe",
+    name: "Pasta auf Spinat und Tomaten",
     ingredients: [],
-    picture: "picture"
+    description:"to be added",
+    required_time:20,
+    difficulty: "easy",
+    image: "grüne-pasta.jpg"
   },
   {
-    name: "Wiener Schnitzel",
+    name: "Erdbeer Smoothie",
     ingredients: [],
-    picture: "picture"
+    description:"to be added",
+    required_time:20,
+    difficulty: "easy",
+    image: "strawberry_juice_jug.jpg"
   },
   {
-    name: "Wiener Schnitzel",
+    name: "Wildlachs auf Gemüse Garnitur",
     ingredients: [],
-    picture: "picture"
+    description:"to be added",
+    required_time:20,
+    difficulty: "easy",
+    image: "wildlachs.jpg"
   },
   {
-    name: "Wiener Schnitzel",
+    name: "Himbeer Fruchtporridge",
     ingredients: [],
-    picture: "picture"
+    description:"to be added",
+    required_time:20,
+    difficulty: "easy",
+    image: "Fruchtporridge.jpg"
   },
   {
-    name: "Wiener Schnitzel",
+    name: "Pancakes",
     ingredients: ["Banane"],
-    picture: "picture"
+    description:"to be added",
+    required_time:20,
+    difficulty: "easy",
+    image: "himbeer_pancakes.jpg"
+  },
+  {
+    name: "Weihnachtsgans",
+    ingredients: ["Banane"],
+    description:"to be added",
+    required_time:20,
+    difficulty: "easy",
+    image: "gans.jpg"
+  },
+  {
+    name: "Hamburger mit Pommes",
+    ingredients: ["Banane"],
+    description:"to be added",
+    required_time:20,
+    difficulty: "easy",
+    image: "burger-pommes.jpg"
+  },
+  {
+    name: "Schokoladeneis mit Blaubeer Garnitur",
+    ingredients: ["Banane"],
+    description:"to be added",
+    required_time:20,
+    difficulty: "easy",
+    image: "schokoladeneis-blaubeere.jpg"
+  },
+  {
+    name: "Schinken Käse Sandwich",
+    ingredients: ["Banane"],
+    description:"to be added",
+    required_time:20,
+    difficulty: "easy",
+    image: "sandwich.jpg"
+  },
+  {
+    name: "Gummibärchen",
+    ingredients: ["Banane"],
+    description:"to be added",
+    required_time:20,
+    difficulty: "easy",
+    image: "gummibärchen.jpg"
+  },
+  {
+    name: "Gemischte Fruchtplatte",
+    ingredients: ["Banane"],
+    description:"to be added",
+    required_time:20,
+    difficulty: "easy",
+    image: "Fruchtplatte.jpg"
+  },
+  {
+    name: "Zitronenrolle mit Früchte Garnitur",
+    ingredients: ["Banane"],
+    description:"to be added",
+    required_time:20,
+    difficulty: "easy",
+    image: "Zitronenrolle.jpg"
+  },
+  {
+    name: "Paella mit Meeresfrüchten",
+    ingredients: ["Banane"],
+    description:"to be added",
+    required_time:20,
+    difficulty: "easy",
+    image: "Paella.jpg"
   }
 ];
 

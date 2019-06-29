@@ -1,14 +1,41 @@
-.first_navbar{
-    background-color: rgb(247, 246, 244);
+.navbar {
 }
-.second_navbar{
-    background-color: rgb(69, 170, 51);
-    color:rgb(247, 246, 244);
+.first_navbar_row {
+  background-color: rgb(247, 246, 244);
+  min-height: 150px;
+  max-height: 150px;
 }
-.search{
-    color: rgb(247, 246, 244);
-    margin-left: 1%;
+.button_group {
+  display: inline-block;
+  vertical-align: text-bottom;
 }
-.spacer{
-    flex: 1 1 auto;
+.contact_button{
+    background-color: grey;
+    color: black;
+}
+.basket_button{
+    background-color: black;
+    color: white;
+    margin-left:10%;
+}
+.add_recipe_button{  
+    background-color: rgb(111, 190, 64);
+    color: white;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+.second_navbar_row {
+  background-color: rgb(69, 170, 51);
+  color: rgb(247, 246, 244);
+}
+.search {
+  color: rgb(247, 246, 244);
+  margin-left: 1%;
+}
+.spacer {
+  flex: 1 1 auto;
+}
+.index_image {
+  height: 95%;
+  margin-left: 4%;
 }

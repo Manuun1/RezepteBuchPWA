@@ -1,15 +1,32 @@
-<mat-toolbar class="first_navbar">
-<mat-toolbar-row>
-  <span>RezepteBuch</span>
-</mat-toolbar-row>
-<mat-toolbar-row class="second_navbar">
-  <span>Suche</span>
-  <form class="search">
-    <mat-form-field>
-      <input matInput><mat-icon>search</mat-icon>
-    </mat-form-field>
-  </form>
-  <span class="spacer"></span>
-  <span>hier sollen unterschiedliche Kategorien stehen</span>
-</mat-toolbar-row>
+<mat-toolbar class="navbar">
+  <mat-toolbar-row class="first_navbar_row">
+    <!--<span>RezepteBuch</span>-->
+    <img class="index_image" src="/assets/images/MainPageIcon.png" />
+    <span class="spacer"></span>
+    <div class="button_group">
+      <button mat-button class="contact_button" (click)="routeToDetailView(pb_entry)">
+        Kontakt
+      </button>
+      <button mat-button class="basket_button" (click)="routeToDetailView(pb_entry)">
+        Einkaufswagen
+      </button>
+      <button
+        mat-button
+        class="add_recipe_button"
+        (click)="routeToDetailView(pb_entry)"
+      >
+        Reiche dein Rezept ein
+      </button>
+    </div>
+  </mat-toolbar-row>
+  <mat-toolbar-row class="second_navbar_row">
+    <span>Suche</span>
+    <form class="search">
+      <mat-form-field>
+        <input matInput /><mat-icon>search</mat-icon>
+      </mat-form-field>
+    </form>
+    <span class="spacer"></span>
+    <span>hier sollen unterschiedliche Kategorien stehen</span>
+  </mat-toolbar-row>
 </mat-toolbar>

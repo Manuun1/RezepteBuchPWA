@@ -18,6 +18,7 @@ export class ViewRecipiesComponent implements OnInit {
       item.forEach(element => {
         //var y = element.payload.toJSON();
         //y["$key"] = element.key;
+        element.image = "assets/images/"+element.image;
         this.recipies.push(element as recipe);
         //console.log(y);
       });

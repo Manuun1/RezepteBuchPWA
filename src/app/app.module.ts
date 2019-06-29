@@ -7,12 +7,14 @@ import { AppComponent } from './app.component';
 import {angular_material} from "./angular-material";
 import { ViewRecipiesComponent } from './recipies/view-recipies/view-recipies.component';
 import { IndexComponent } from './index/index.component';
+import { ViewRecipiesDetailComponent } from './recipies/view-recipies-detail/view-recipies-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ViewRecipiesComponent,
-    IndexComponent
+    IndexComponent,
+    ViewRecipiesDetailComponent
   ],
   imports: [
     BrowserModule,
