@@ -8,6 +8,10 @@
         <p class="recipe_card_name">
           {{ recipe.name }}
         </p>
+        Zutaten:
+        <p *ngFor="let ingredient of recipe_ingredients">
+          {{ingredient.name}} {{ingredient.unit}} {{ingredient.category}}
+        </p>
       </div>
     </mat-card-content>
     <mat-card-actions>

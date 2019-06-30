@@ -28,8 +28,6 @@ export class ViewRecipiesComponent implements OnInit {
   }
   //Route to the detail view of a recipe => Show ingredients, cooking time, difficulty, ...
   routeToDetailView(recipe: any) {
-    console.log(recipe);
-
     let navigationExtras: NavigationExtras = {
       state: {
         recipe: recipe
