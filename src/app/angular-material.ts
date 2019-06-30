@@ -11,6 +11,9 @@ import { MatGridListModule } from "@angular/material/grid-list";
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatChipsModule } from "@angular/material/chips";
 import { MatDialogModule } from "@angular/material/dialog";
+import { MatStepperModule } from "@angular/material/stepper";
+import { MatSelectModule } from "@angular/material/select";
+import { MatAutocompleteModule } from "@angular/material/autocomplete";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 @NgModule({
@@ -28,7 +31,10 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     MatSidenavModule,
     MatChipsModule,
     MatDialogModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatStepperModule,
+    MatSelectModule,
+    MatAutocompleteModule
   ],
   exports: [
     MatButtonModule,
@@ -44,7 +50,10 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     MatSidenavModule,
     MatChipsModule,
     MatDialogModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatStepperModule,
+    MatSelectModule,
+    MatAutocompleteModule
   ]
 })
 export class angular_material {}

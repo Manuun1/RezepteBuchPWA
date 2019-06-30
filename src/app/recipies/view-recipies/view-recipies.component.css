@@ -2,30 +2,29 @@
   width: 100%;
   height: 100%;
 }
-
-.recipe_card{
-  font-family: 'Cookie', cursive;
+.recipe_card {
+  font-family: "Cookie", cursive;
 }
-.recipe_card_name{
+.recipe_card_name {
   font-size: 30px;
 }
-.header_writing_div{
+.header_writing_div {
   margin-top: 5%;
 }
 h2 {
-  width: 100%; 
-  text-align: center; 
-  border-bottom: 1.5px solid grey; 
+  width: 100%;
+  text-align: center;
+  border-bottom: 1.5px solid grey;
   line-height: 0.1em;
-} 
-
-h2 span { 
-   background:rgb(247, 246, 244); 
-   padding:0 10px; 
 }
 
-.header_writing{
-  font-family: 'Amatic SC', cursive;
+h2 span {
+  background: rgb(247, 246, 244);
+  padding: 0 10px;
+}
+
+.header_writing {
+  font-family: "Amatic SC", cursive;
   font-size: 40px;
   text-align: center;
 }
@@ -37,7 +36,7 @@ h2 span {
   margin-bottom: 5%;
   display: grid;
   grid-template-columns: auto auto auto auto auto;
-  grid-template-rows: 100%; 
+  grid-template-rows: 100%;
   grid-column-gap: 15px;
   grid-row-gap: 15px;
 }

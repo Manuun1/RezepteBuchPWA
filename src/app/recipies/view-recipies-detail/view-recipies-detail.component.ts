@@ -24,7 +24,7 @@ export class ViewRecipiesDetailComponent implements OnInit {
     console.log(this.recipe.name);
   }
 
-  routeBackToDataView() {
+  routeToRecipeView() {
     this.router.navigate(["/"]);
   }
 }

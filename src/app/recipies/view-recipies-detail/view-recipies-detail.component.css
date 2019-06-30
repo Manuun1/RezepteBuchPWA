@@ -1,10 +1,11 @@
 .css_grid {
+  /*background-image: url("/assets/images/wood_background.jpg");*/
   margin-left: 5%;
   margin-right: 5%;
   margin-top: 5%;
   margin-bottom: 5%;
   display: grid;
-  grid-template-columns: auto;
+  grid-template-columns: 50% 50%;
   grid-template-rows: 100%;
   grid-column-gap: 15px;
   grid-row-gap: 15px;
@@ -12,14 +13,33 @@
 .image_view {
   width: 100%;
   height: 100%;
-  max-width: 50%;
-  max-height: 50%;
 }
-.material_card_content {
-  display: flex;
-  align-items: center;
+.recipe_description {
+  text-align: left;
+  border: 1.5px;
+  border-style: solid;
+  border-color: lightgray;
+  padding: 1em;
 }
-.recipe_description{
-    text-align: left;
-    border:1.5px; border-style:solid; border-color:lightgray; padding: 1em;
+h2 {
+  font-family: "Courgette", cursive;
+}
+p {
+  font-family: "Ubuntu", sans-serif;
+}
+.recipe_description_header {
+  font-family: "Amatic SC", cursive;
+  font-size: 50px;
+}
+.wrapper {
+  text-align: center;
+}
+
+.mat-card-actions_buttons {
+  height: 3%;
+  margin-right: 2%;
+  border: 1.5px;
+  border-style: solid;
+  border-color: black;
+  font-family: "Courgette", cursive;
 }

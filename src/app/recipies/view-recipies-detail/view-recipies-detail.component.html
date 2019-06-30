@@ -1,23 +1,44 @@
 <div class="css_grid">
-  <mat-card class="recipe_card">
-    <mat-card-content class="material_card_content">
-      <div>
-        <img class="image_view" [src]="recipe.image" />
-      </div>
+  <mat-card>
+    <mat-card-content>
+      <img class="image_view" [src]="recipe.image" />
+    </mat-card-content>
+  </mat-card>
+  <mat-card>
+    <mat-card-content>
       <div class="recipe_description">
-        <p class="recipe_card_name">
-          {{ recipe.name }}
-        </p>
-        Zutaten:
+        <span class="recipe_description_header">{{ recipe.name }}</span>
+        <h2>Zutaten</h2>
         <p *ngFor="let ingredient of recipe_ingredients">
-          {{ingredient.name}} {{ingredient.unit}} {{ingredient.category}}
+          {{ ingredient.name }} {{ ingredient.unit }}
+          {{ ingredient.category }}
         </p>
+        <h2>Zubereitung</h2>
+        <p>
+          <strong>Schwierigkeit:</strong> {{ recipe.difficulty.name }}
+          <strong>Erforderliche Zeit:</strong>{{ recipe.required_time }}
+        </p>
+        <p>
+          {{ recipe.description }}
+        </p>
+        <br />
+        <br />
+        <button
+          mat-button
+          (click)="routeToRecipeView()"
+          class="mat-card-actions_buttons"
+        >
+          <mat-icon>arrow_back</mat-icon>
+        </button>
+        <button
+          mat-button
+          (click)="routeToRecipeView()"
+          class="mat-card-actions_buttons"
+        >
+          Zutaten in den Einkaufswagen (TODO)
+        </button>
       </div>
     </mat-card-content>
-    <mat-card-actions>
-      <button mat-button (click)="routeToDetailView(recipe)">
-        <mat-icon>notes</mat-icon>
-      </button>
-    </mat-card-actions>
+    <mat-card-actions> </mat-card-actions>
   </mat-card>
 </div>

@@ -8,18 +8,23 @@ import {angular_material} from "./angular-material";
 import { ViewRecipiesComponent } from './recipies/view-recipies/view-recipies.component';
 import { IndexComponent } from './index/index.component';
 import { ViewRecipiesDetailComponent } from './recipies/view-recipies-detail/view-recipies-detail.component';
+import { AddRecipeComponent } from './recipies/add-recipe/add-recipe.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     ViewRecipiesComponent,
     IndexComponent,
-    ViewRecipiesDetailComponent
+    ViewRecipiesDetailComponent,
+    AddRecipeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    angular_material
+    angular_material,
+    FormsModule, 
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
