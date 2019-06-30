@@ -3,7 +3,7 @@ import { Observable, of } from "rxjs";
 
 export interface recipe {
   name: string;
-  ingredients: ingredient_amount[] /*ingredient[]*/;
+  ingredients: ingredient_amount[];
   required_time: number;
   description: string;
   difficulty: difficulty; //enumeration;
@@ -66,18 +66,18 @@ const categories: category[] = [
 //Using a Hashmap for the ingredients
 const Ingredients = new Map([
   ["Banane", { unit: "Stück", category: "to be determined" }],
-  ["Spinat", { unit: "Stück", category: "to be determined" }],
-  ["Pasta", { unit: "Kilogram", category: "to be determined" }],
-  ["Heidelbeeren", { unit: "pro Stück", category: "to be determined" }],
-  ["Eier", { unit: "pro Stück", category: "to be determined" }],
-  ["Mehl", { unit: "pro Stück", category: "to be determined" }],
-  ["Sahne", { unit: "pro Stück", category: "to be determined" }],
-  ["Zucker", { unit: "pro Stück", category: "to be determined" }],
-  ["Tomaten", { unit: "pro Stück", category: "to be determined" }],
-  ["Apfel", { unit: "pro Stück", category: "to be determined" }],
-  ["Milch", { unit: "pro Stück", category: "to be determined" }],
-  ["Orangen", { unit: "pro Stück", category: "to be determined" }],
-  ["Gans", { unit: "pro Kilogram", category: "to be determined" }]
+  ["Spinat", { unit: "Gramm", category: "to be determined" }],
+  ["Pasta", { unit: "Gramm", category: "to be determined" }],
+  ["Heidelbeeren", { unit: "Gramm", category: "to be determined" }],
+  ["Eier", { unit: "Stück", category: "to be determined" }],
+  ["Mehl", { unit: "Gramm", category: "to be determined" }],
+  ["Sahne", { unit: "Milliliter", category: "to be determined" }],
+  ["Zucker", { unit: "Gramm", category: "to be determined" }],
+  ["Tomaten", { unit: "Gramm", category: "to be determined" }],
+  ["Apfel", { unit: "Stück", category: "to be determined" }],
+  ["Milch", { unit: "Milliliter", category: "to be determined" }],
+  ["Orangen", { unit: "Stück", category: "to be determined" }],
+  ["Gans", { unit: "Gramm", category: "to be determined" }]
 ]);
 
 const Recipies: recipe[] = [
@@ -197,8 +197,29 @@ export class DataService {
     return of(Recipies);
   }
 
+  add_recipe(new_recipe:recipe):boolean{
+    Recipies.push(new_recipe);
+    return true;
+  }
+
   get_difficulties(): difficulty[]{
     return difficulties;
+  }
+
+  get_difficulties_byValue(value:number): difficulty{
+    let res:difficulty;
+    difficulties.forEach(function(element){
+      if (element.value == value)
+      {
+        res = element;
+      }
+    })
+    return res;
+  }
+
+  get_ingredient_data(name:string): ingredient{
+    let selected_ingredient = Ingredients.get(name)
+    return {name:name,unit:selected_ingredient.unit,category:selected_ingredient.category} ;
   }
 
   //Get all ingredients from a specific recipe

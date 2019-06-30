@@ -33,3 +33,10 @@ input{
   border-color: black;
   font-family: "Courgette", cursive;
 }
+.error_code{
+  color:red;
+}
+.input_description{
+  min-width: 100%;
+  width: 100%;
+}
