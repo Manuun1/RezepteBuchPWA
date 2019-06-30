@@ -1,0 +1,25 @@
+.css_grid {
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: 100%;
+  grid-column-gap: 15px;
+  grid-row-gap: 15px;
+}
+.image_view {
+  width: 100%;
+  height: 100%;
+  max-width: 50%;
+  max-height: 50%;
+}
+.material_card_content {
+  display: flex;
+  align-items: center;
+}
+.recipe_description{
+    text-align: left;
+    border:1.5px; border-style:solid; border-color:lightgray; padding: 1em;
+}

@@ -1,17 +1,19 @@
-<div class="recipe_card_wrapper">
-    <mat-card class="recipe_card">
-      <mat-card-content class="material_card_content">
-        <p>
-          <img class="image_view" [src]="recipe.image" />
-        </p>
+<div class="css_grid">
+  <mat-card class="recipe_card">
+    <mat-card-content class="material_card_content">
+      <div>
+        <img class="image_view" [src]="recipe.image" />
+      </div>
+      <div class="recipe_description">
         <p class="recipe_card_name">
           {{ recipe.name }}
         </p>
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-button (click)="routeToDetailView(recipe)">
-          <mat-icon>notes</mat-icon>
-        </button>
-      </mat-card-actions>
-    </mat-card>
-  </div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button (click)="routeToDetailView(recipe)">
+        <mat-icon>notes</mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>
