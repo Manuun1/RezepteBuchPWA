@@ -117,17 +117,14 @@ export class AddRecipeComponent implements OnInit {
     let difficulty:difficulty;
 
     this.selected_ingredients.forEach(function(element){
-      ingredient_amount.push({key:element.name,amount:element.amount});
+      ingredient_amount.push({key:element.name,amount:+element.amount});
     })
-
-    console.log("Starting");
 
     difficulty = this.dataservice.get_difficulties_byValue(selected_difficulty);
     console.log(difficulty);
     
     if(difficulty!=null)
     {
-      console.log("Difficulty worked");
       this.new_recipe = {
         name:recipe_name,
         ingredients:  ingredient_amount,
@@ -141,7 +138,7 @@ export class AddRecipeComponent implements OnInit {
       
       if(response == true)
       {
-        console.log("recponse was true");
+        console.log("adding was successful");
         
         this.display_stepper=false;
         this.insert_successfull=true;

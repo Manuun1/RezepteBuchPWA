@@ -13,7 +13,7 @@
       <button mat-button class="other_button" (click)="routeToRecipeView()">
         Kontakt
       </button>
-      <button mat-button class="basket_button" (click)="routeToBasketView()">
+      <button mat-button [matBadge]="basket_amount" matBadgePosition="after" matBadgeColor="warn" class="basket_button" (click)="routeToBasketView()">
         Einkaufswagen
       </button>
       <button

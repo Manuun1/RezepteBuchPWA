@@ -14,7 +14,8 @@ import { MatDialogModule } from "@angular/material/dialog";
 import { MatStepperModule } from "@angular/material/stepper";
 import { MatSelectModule } from "@angular/material/select";
 import { MatAutocompleteModule } from "@angular/material/autocomplete";
-import { MatPaginatorModule } from '@angular/material';
+import { MatPaginatorModule } from "@angular/material";
+import { MatBadgeModule } from "@angular/material/badge";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 @NgModule({
@@ -36,7 +37,8 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     MatStepperModule,
     MatSelectModule,
     MatAutocompleteModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatBadgeModule
   ],
   exports: [
     MatButtonModule,
@@ -56,7 +58,8 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     MatStepperModule,
     MatSelectModule,
     MatAutocompleteModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatBadgeModule
   ]
 })
 export class angular_material {}

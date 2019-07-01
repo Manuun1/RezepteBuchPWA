@@ -1,12 +1,10 @@
 import { Component, OnInit } from "@angular/core";
 import {
   FormControl,
-  FormGroupDirective,
-  NgForm,
   Validators
 } from "@angular/forms";
-import { ErrorStateMatcher } from "@angular/material/core";
 import { Router } from "@angular/router";
+import { DataService } from "../data.service";
 
 /*export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -26,11 +24,16 @@ export class IndexComponent implements OnInit {
     Validators.email
   ]);
 
-  //matcher = new MyErrorStateMatcher();
+  basket_amount: number = 0;
 
-  constructor(private router: Router) {}
+  constructor(private dataservice: DataService, private router: Router) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.dataservice.get_BasketItemAmount().subscribe(value => {
+      console.log(value);
+      this.basket_amount = value;
+    });
+  }
 
   routeToRecipeView() {
     this.router.navigate(["/"]);

@@ -6,7 +6,7 @@ export interface recipe {
   ingredients: ingredient_amount[];
   required_time: number;
   description: string;
-  difficulty: difficulty; //enumeration;
+  difficulty: difficulty;
   image: string;
 }
 
@@ -96,7 +96,11 @@ const Ingredients = new Map([
 const Recipies: recipe[] = [
   {
     name: "Pasta auf Spinat und Tomaten",
-    ingredients: [{ key: "Banane", amount: 3 }, { key: "Pasta", amount: 1 }],
+    ingredients: [
+      { key: "Pasta", amount: 300 },
+      { key: "Tomaten", amount: 200 },
+      { key: "Spinat", amount: 200 }
+    ],
     description:
       "Die Pasta in kochendem Salzwasser al dente kochen.\nInzwischen das Öl in einer Pfanne erhitzen, Spinat und Tomaten darin 2 - 3 Minuten anbraten.\nDie Pasta abtropfen lassen und zum Gemüse geben. Mit Salz und Pfeffer abschmecken, nach Belieben mit Parmesan bestreuen.",
     required_time: 20,
@@ -213,6 +217,8 @@ export class DataService {
 
   add_recipe(new_recipe: recipe): boolean {
     Recipies.push(new_recipe);
+    console.log(new_recipe);
+
     return true;
   }
 
@@ -276,9 +282,10 @@ export class DataService {
     return ingredients;
   }
 
-  get_allBasketItems() {
-    let res: ingredient_amount_unit[] = [];
+  get_allBasketItems():Observable<any> {
+    let res: any[] = [];
     let temp: any;
+
     Basket.forEach(function(element) {
       temp = Ingredients.get(element.key);
 
@@ -286,9 +293,61 @@ export class DataService {
         name: element.key,
         amount: element.amount,
         category: temp.category,
-        unit: temp.unit
+        unit: temp.unit,
+        //Button is used, to be able to add a delete button for each row in the basket table
+        button: ""
       });
     });
-    return res;
+
+    return of(res);
+  }
+
+  delete_BasketItem(itemName: string):boolean {
+    let status = false;
+    console.log(itemName);
+    
+    for (let i = 0; i < Basket.length; i++) {
+      console.log(Basket[i].key);
+      
+      if (Basket[i].key == itemName) {
+        console.log("found");
+        Basket.splice(i,1);
+        status = true;
+        break;
+      }
+    }
+    return status;
+  }
+
+  get_BasketItemAmount(): Observable<any> {
+    /*let Basket_length_Observable = new Observable(observer => {
+      console.log("item");
+      observer.next(Basket.length);
+    });*/
+    //return Basket_length_Observable;
+
+    return of(Basket.length);
+  }
+
+  ingredients_addToBasket(recipe: recipe) {
+    console.log(recipe);
+    let found: boolean = false;
+    let found_element: any;
+
+    recipe.ingredients.forEach(function(ingredient) {
+      found = false;
+
+      Basket.forEach(function(element) {
+        if (ingredient.key == element.key) {
+          found = true;
+          found_element = element;
+        }
+      });
+      if (found == false) {
+        Basket.push({ key: ingredient.key, amount: ingredient.amount });
+      } else {
+        found_element.amount += ingredient.amount;
+      }
+    });
   }
 }

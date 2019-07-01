@@ -27,4 +27,8 @@ export class ViewRecipiesDetailComponent implements OnInit {
   routeToRecipeView() {
     this.router.navigate(["/"]);
   }
+
+  ingredientsAddToBasket(){
+    this.dataservice.ingredients_addToBasket(this.recipe);
+  }
 }

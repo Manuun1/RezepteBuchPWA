@@ -1,6 +1,7 @@
 <div class="css_grid">
   <mat-card>
     <mat-card-content>
+      <h2>Dein Einkaufswagen</h2>
       <mat-form-field>
         <input
           matInput
@@ -37,6 +38,20 @@
               Kategorie
             </mat-header-cell>
             <mat-cell *matCellDef="let row"> {{ row.category }} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="button">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>
+              
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row">
+              <button
+                mat-button
+                (click)="deleteBasketItem(row)"
+              >
+                <mat-icon>delete_forever</mat-icon>
+              </button>
+            </mat-cell>
           </ng-container>
 
           <!-- Different columns goes here -->

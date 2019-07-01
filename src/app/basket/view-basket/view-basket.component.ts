@@ -11,17 +11,23 @@ import { Router } from "@angular/router";
 export class ViewBasketComponent implements OnInit {
   basket: ingredient_amount_unit[];
 
-  displayedColumns: string[] = ["name","amount", "unit", "category"];
+  displayedColumns: string[] = ["name","amount", "unit", "category","button"];
   dataSource:MatTableDataSource<ingredient_amount_unit>;
 
   @ViewChild("BasketPaginator") paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private dataservice: DataService, private router: Router) {
-    this.basket = this.dataservice.get_allBasketItems();
-    this.dataSource = new MatTableDataSource(this.basket);
 
-    console.log(this.basket);
+  constructor(private dataservice: DataService, private router: Router) {
+    
+    this.dataservice.get_allBasketItems().subscribe(item => {
+      this.basket = [];
+      item.forEach(element => {
+        this.basket.push(element);
+      });
+    });
+
+    this.dataSource = new MatTableDataSource(this.basket);
   }
 
   ngOnInit() {
@@ -35,5 +41,10 @@ export class ViewBasketComponent implements OnInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  deleteBasketItem(row:any){
+    console.log(row);
+    this.dataservice.delete_BasketItem(row.name);
   }
 }
