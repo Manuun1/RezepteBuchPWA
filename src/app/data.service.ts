@@ -242,7 +242,7 @@ export class DataService {
   //Get all ingredients from a specific recipe
   get_recipe_ingredients(ingredients: ingredient_amount[]) {
     //Aggregation of all ingredients of the selected recipe
-    let ingredients_list: ingredient[] = [];
+    let ingredients_list: ingredient_amount_unit[] = [];
     let selected_ingredient;
 
     ingredients.forEach(function(element) {
@@ -252,6 +252,7 @@ export class DataService {
       //Adding the full dataset to the aggregation of the ingredients
       ingredients_list.push({
         name: element.key,
+        amount: element.amount,
         unit: selected_ingredient.unit,
         category: selected_ingredient.category
       });

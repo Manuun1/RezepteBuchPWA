@@ -10,8 +10,7 @@
         <span class="recipe_description_header">{{ recipe.name }}</span>
         <h2>Zutaten</h2>
         <p *ngFor="let ingredient of recipe_ingredients">
-          {{ ingredient.name }} {{ ingredient.unit }}
-          {{ ingredient.category }}
+          {{ ingredient.amount }} {{ ingredient.unit }} {{ ingredient.name }}
         </p>
         <h2>Zubereitung</h2>
         <p>
@@ -35,7 +34,7 @@
           (click)="routeToRecipeView()"
           class="mat-card-actions_buttons"
         >
-          Zutaten in den Einkaufswagen (TODO)
+          Zutaten in den Einkaufswagen
         </button>
       </div>
     </mat-card-content>
