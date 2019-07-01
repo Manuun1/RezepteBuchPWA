@@ -16,14 +16,21 @@ export interface ingredient {
   category: string;
 }
 
-export interface ingredient_amount{
-  key:string
-  amount:number
+export interface ingredient_amount {
+  key: string;
+  amount: number;
+}
+
+export interface ingredient_amount_unit {
+  name: string;
+  amount: number;
+  unit: string;
+  category: string;
 }
 
 export interface difficulty {
   name: string;
-  value:number;
+  value: number;
 }
 
 export interface category {
@@ -32,28 +39,28 @@ export interface category {
 
 const difficulties: difficulty[] = [
   {
-    name:"kinderleicht",
-    value:0
+    name: "kinderleicht",
+    value: 0
   },
   {
-    name:"einfach",
-    value:1
+    name: "einfach",
+    value: 1
   },
   {
-    name:"akzeptabel",
-    value:2
+    name: "akzeptabel",
+    value: 2
   },
   {
-    name:"anspruchsvoll",
-    value:3
+    name: "anspruchsvoll",
+    value: 3
   },
   {
-    name:"sehr anspruchsvoll",
-    value:4
+    name: "sehr anspruchsvoll",
+    value: 4
   },
   {
-    name:"wirklich schwierig",
-    value:5
+    name: "wirklich schwierig",
+    value: 5
   }
 ];
 
@@ -61,6 +68,12 @@ const categories: category[] = [
   {
     name: "Obst und Gemüse"
   }
+];
+
+const Basket: ingredient_amount[] = [
+  { key: "Banane", amount: 2 },
+  { key: "Gans", amount: 500 },
+  { key: "Spinat", amount: 200 }
 ];
 
 //Using a Hashmap for the ingredients
@@ -83,8 +96,9 @@ const Ingredients = new Map([
 const Recipies: recipe[] = [
   {
     name: "Pasta auf Spinat und Tomaten",
-    ingredients: [{key:"Banane",amount:3},{key:"Pasta",amount:1}],
-    description: "Die Pasta in kochendem Salzwasser al dente kochen.\nInzwischen das Öl in einer Pfanne erhitzen, Spinat und Tomaten darin 2 - 3 Minuten anbraten.\nDie Pasta abtropfen lassen und zum Gemüse geben. Mit Salz und Pfeffer abschmecken, nach Belieben mit Parmesan bestreuen.",
+    ingredients: [{ key: "Banane", amount: 3 }, { key: "Pasta", amount: 1 }],
+    description:
+      "Die Pasta in kochendem Salzwasser al dente kochen.\nInzwischen das Öl in einer Pfanne erhitzen, Spinat und Tomaten darin 2 - 3 Minuten anbraten.\nDie Pasta abtropfen lassen und zum Gemüse geben. Mit Salz und Pfeffer abschmecken, nach Belieben mit Parmesan bestreuen.",
     required_time: 20,
     difficulty: difficulties[1],
     image: "grüne-pasta.jpg"
@@ -197,44 +211,50 @@ export class DataService {
     return of(Recipies);
   }
 
-  add_recipe(new_recipe:recipe):boolean{
+  add_recipe(new_recipe: recipe): boolean {
     Recipies.push(new_recipe);
     return true;
   }
 
-  get_difficulties(): difficulty[]{
+  get_difficulties(): difficulty[] {
     return difficulties;
   }
 
-  get_difficulties_byValue(value:number): difficulty{
-    let res:difficulty;
-    difficulties.forEach(function(element){
-      if (element.value == value)
-      {
+  get_difficulties_byValue(value: number): difficulty {
+    let res: difficulty;
+    difficulties.forEach(function(element) {
+      if (element.value == value) {
         res = element;
       }
-    })
+    });
     return res;
   }
 
-  get_ingredient_data(name:string): ingredient{
-    let selected_ingredient = Ingredients.get(name)
-    return {name:name,unit:selected_ingredient.unit,category:selected_ingredient.category} ;
+  get_ingredient_data(name: string): ingredient {
+    let selected_ingredient = Ingredients.get(name);
+    return {
+      name: name,
+      unit: selected_ingredient.unit,
+      category: selected_ingredient.category
+    };
   }
 
   //Get all ingredients from a specific recipe
   get_recipe_ingredients(ingredients: ingredient_amount[]) {
-
     //Aggregation of all ingredients of the selected recipe
-    let ingredients_list:ingredient[] = [];
+    let ingredients_list: ingredient[] = [];
     let selected_ingredient;
 
     ingredients.forEach(function(element) {
       //Gathering the ingredient from the HashMap, using the key
       selected_ingredient = Ingredients.get(element.key);
-      
+
       //Adding the full dataset to the aggregation of the ingredients
-      ingredients_list.push({name:element.key,unit:selected_ingredient.unit,category:selected_ingredient.category});
+      ingredients_list.push({
+        name: element.key,
+        unit: selected_ingredient.unit,
+        category: selected_ingredient.category
+      });
     });
     //Returning the aggregation of all ingredients
     return ingredients_list;
@@ -245,9 +265,29 @@ export class DataService {
     let ingredients: ingredient[] = [];
 
     Ingredients.forEach(function(key, value) {
-      ingredients.push({ name: value, unit: key.unit, category: key.category } as ingredient);
+      ingredients.push({
+        name: value,
+        unit: key.unit,
+        category: key.category
+      } as ingredient);
     });
 
     return ingredients;
+  }
+
+  get_allBasketItems() {
+    let res: ingredient_amount_unit[] = [];
+    let temp: any;
+    Basket.forEach(function(element) {
+      temp = Ingredients.get(element.key);
+
+      res.push({
+        name: element.key,
+        amount: element.amount,
+        category: temp.category,
+        unit: temp.unit
+      });
+    });
+    return res;
   }
 }

@@ -10,6 +10,7 @@ import { IndexComponent } from './index/index.component';
 import { ViewRecipiesDetailComponent } from './recipies/view-recipies-detail/view-recipies-detail.component';
 import { AddRecipeComponent } from './recipies/add-recipe/add-recipe.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ViewBasketComponent } from './basket/view-basket/view-basket.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ViewRecipiesComponent,
     IndexComponent,
     ViewRecipiesDetailComponent,
-    AddRecipeComponent
+    AddRecipeComponent,
+    ViewBasketComponent
   ],
   imports: [
     BrowserModule,

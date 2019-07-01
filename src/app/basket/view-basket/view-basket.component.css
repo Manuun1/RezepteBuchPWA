@@ -1,0 +1,24 @@
+.css_grid {
+  /*background-image: url("/assets/images/wood_background.jpg");*/
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: 100%;
+  grid-column-gap: 15px;
+  grid-row-gap: 15px;
+}
+table {
+    width: 100%;
+  }
+  
+  .mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  
+  td, th {
+    width: 25%;
+  }

@@ -39,4 +39,8 @@ export class IndexComponent implements OnInit {
   routeToAddRecipe() {
     this.router.navigate(["/add_recipe"]);
   }
+
+  routeToBasketView() {
+    this.router.navigate(["/view_basket"]);
+  }
 }
