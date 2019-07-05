@@ -8,6 +8,8 @@
 .button_group {
   display: inline-block;
   vertical-align: text-bottom;
+  margin-top: 100px;
+  margin-right: 75px; 
 }
 .other_button{
     color: black;

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
+import { Component, OnInit, ViewChild, ChangeDetectorRef } from "@angular/core";
 import { MatTableDataSource, MatPaginator, MatSort } from "@angular/material";
 import { DataService, ingredient_amount_unit } from "src/app/data.service";
 import { Router } from "@angular/router";
@@ -11,26 +11,16 @@ import { Router } from "@angular/router";
 export class ViewBasketComponent implements OnInit {
   basket: ingredient_amount_unit[];
 
-  displayedColumns: string[] = ["name","amount", "unit", "category","button"];
-  dataSource:MatTableDataSource<ingredient_amount_unit>;
+  displayedColumns: string[] = ["name", "amount", "unit", "category", "button"];
+  dataSource: MatTableDataSource<ingredient_amount_unit>;
 
   @ViewChild("BasketPaginator") paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-
-  constructor(private dataservice: DataService, private router: Router) {
-    
-    this.dataservice.get_allBasketItems().subscribe(item => {
-      this.basket = [];
-      item.forEach(element => {
-        this.basket.push(element);
-      });
-    });
-
-    this.dataSource = new MatTableDataSource(this.basket);
-  }
+  constructor(private dataservice: DataService, private router: Router, private changedetectorref:ChangeDetectorRef) {}
 
   ngOnInit() {
+    this.refresh();
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
@@ -43,8 +33,19 @@ export class ViewBasketComponent implements OnInit {
     }
   }
 
-  deleteBasketItem(row:any){
+  deleteBasketItem(row: any) {
     console.log(row);
     this.dataservice.delete_BasketItem(row.name);
+    console.log(this.basket);
+    this.dataSource = new MatTableDataSource(this.basket);
+    this.refresh();
+  }
+
+  refresh(){
+    this.dataservice
+      .get_allBasketItems()
+      .subscribe(item => (this.basket = item));
+    this.dataSource = new MatTableDataSource(this.basket);
+    this.changedetectorref.detectChanges();
   }
 }

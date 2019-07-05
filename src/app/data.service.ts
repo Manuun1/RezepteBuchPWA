@@ -282,7 +282,7 @@ export class DataService {
     return ingredients;
   }
 
-  get_allBasketItems():Observable<any> {
+  get_allBasketItems(): Observable<any> {
     let res: any[] = [];
     let temp: any;
 
@@ -302,16 +302,16 @@ export class DataService {
     return of(res);
   }
 
-  delete_BasketItem(itemName: string):boolean {
+  delete_BasketItem(itemName: string): boolean {
     let status = false;
     console.log(itemName);
-    
+
     for (let i = 0; i < Basket.length; i++) {
       console.log(Basket[i].key);
-      
+
       if (Basket[i].key == itemName) {
         console.log("found");
-        Basket.splice(i,1);
+        Basket.splice(i, 1);
         status = true;
         break;
       }

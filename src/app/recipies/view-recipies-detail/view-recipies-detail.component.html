@@ -25,7 +25,7 @@
         <button
           mat-button
           (click)="routeToRecipeView()"
-          class="mat-card-actions_buttons"
+          class="mat-card-actions_back_button"
         >
           <mat-icon>arrow_back</mat-icon>
         </button>
@@ -36,6 +36,10 @@
         >
           Zutaten in den Einkaufswagen
         </button>
+        <br />
+        <p *ngIf="show_ingredients_added" class="amount_ingredients_added">
+          Zutaten für {{ amount_ingredients_added }} Portionen hinzugefügt
+        </p>
       </div>
     </mat-card-content>
     <mat-card-actions> </mat-card-actions>

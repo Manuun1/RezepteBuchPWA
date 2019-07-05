@@ -1,10 +1,10 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ChangeDetectorRef } from "@angular/core";
 import {
   FormControl,
   Validators
 } from "@angular/forms";
 import { Router } from "@angular/router";
-import { DataService } from "../data.service";
+import { DataService } from 'src/app/data.service';
 
 /*export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -26,13 +26,18 @@ export class IndexComponent implements OnInit {
 
   basket_amount: number = 0;
 
-  constructor(private dataservice: DataService, private router: Router) {}
+  constructor(private dataservice: DataService, private router: Router,private changedetectorref:ChangeDetectorRef) {}
 
   ngOnInit() {
+    this.refresh();
+  }
+
+  refresh(){
     this.dataservice.get_BasketItemAmount().subscribe(value => {
       console.log(value);
       this.basket_amount = value;
     });
+    this.changedetectorref.detectChanges();
   }
 
   routeToRecipeView() {
