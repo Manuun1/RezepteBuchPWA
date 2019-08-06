@@ -17,6 +17,8 @@ import { MatAutocompleteModule } from "@angular/material/autocomplete";
 import { MatPaginatorModule } from "@angular/material";
 import { MatBadgeModule } from "@angular/material/badge";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import {MatExpansionModule} from '@angular/material/expansion';
+
 
 @NgModule({
   imports: [
@@ -38,7 +40,8 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     MatSelectModule,
     MatAutocompleteModule,
     MatPaginatorModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatExpansionModule
   ],
   exports: [
     MatButtonModule,
@@ -59,7 +62,8 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     MatSelectModule,
     MatAutocompleteModule,
     MatPaginatorModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatExpansionModule
   ]
 })
 export class angular_material {}

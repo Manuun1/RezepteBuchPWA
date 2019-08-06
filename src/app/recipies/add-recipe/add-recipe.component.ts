@@ -50,7 +50,7 @@ export class AddRecipeComponent implements OnInit {
 
   ngOnInit() {
     this.difficulties = this.dataservice.get_difficulties();
-    this.ingredients = this.dataservice.get_allIngredients();
+    this.dataservice.get_allIngredients().subscribe(item => this.ingredients=item);
 
     this.form_basics = this._formBuilder.group({
       Rezeptname: ["", Validators.required]

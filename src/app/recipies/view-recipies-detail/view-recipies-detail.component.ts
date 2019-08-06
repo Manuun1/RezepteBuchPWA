@@ -1,7 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { DataService, recipe, ingredient } from "src/app/data.service";
-import { FirestoreService } from "src/app/firestore.service";
 
 export interface testing {
   name: string;
@@ -33,7 +32,6 @@ export class ViewRecipiesDetailComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.recipe.name);
     if(this.recipe== undefined)
     {
       this.router.navigate(["/"]);

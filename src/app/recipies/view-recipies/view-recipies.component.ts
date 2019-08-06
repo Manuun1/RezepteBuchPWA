@@ -1,7 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { DataService, recipe } from "src/app/data.service";
 import { NavigationExtras, Router } from "@angular/router";
-import { Globals } from "src/app/global_variables";
 
 @Component({
   selector: "app-view-recipies",
@@ -13,8 +12,7 @@ export class ViewRecipiesComponent implements OnInit {
 
   constructor(
     private dataservice: DataService,
-    private router: Router,
-    private globals: Globals
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -34,9 +32,6 @@ export class ViewRecipiesComponent implements OnInit {
 
   ngAfterViewChecked() {
     console.log("View Recipies was fully loaded");
-    
-    this.globals.show_content = true;
-    this.globals.show_loading_dots = false;
   }
 
   //Route to the detail view of a recipe => Show ingredients, cooking time, difficulty, ...

@@ -5,7 +5,6 @@ import { AppRoutingModule, } from './app-routing.module';
 import { AppComponent } from './app.component';
 //Using my own custom file for Angular Material Component Imports 
 import {angular_material} from "./modules_import/angular-material";
-import {firebase_modules} from "./modules_import/firebase_modules";
 import { ViewRecipiesComponent } from './recipies/view-recipies/view-recipies.component';
 import { IndexComponent } from './page-components/index/index.component';
 import { ViewRecipiesDetailComponent } from './recipies/view-recipies-detail/view-recipies-detail.component';
@@ -13,8 +12,10 @@ import { AddRecipeComponent } from './recipies/add-recipe/add-recipe.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ViewBasketComponent } from './basket/view-basket/view-basket.component';
 import { MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
-import { Globals } from './global_variables';
-import { PreloaderPageComponent } from './basket/preloader-page/preloader-page.component';
+import { ViewBasketEditComponent } from './basket/view-basket-edit/view-basket-edit.component';
+import { ViewIngredientsComponent } from './ingredients/view-ingredients/view-ingredients.component';
+import { ContactComponent } from './page-components/contact/contact.component';
+import { PagenotfoundComponent } from './page-components/pagenotfound/pagenotfound.component';
 
 
 @NgModule({
@@ -25,17 +26,20 @@ import { PreloaderPageComponent } from './basket/preloader-page/preloader-page.c
     ViewRecipiesDetailComponent,
     AddRecipeComponent,
     ViewBasketComponent,
-    PreloaderPageComponent
+    ViewBasketEditComponent,
+    ViewIngredientsComponent,
+    ContactComponent,
+    PagenotfoundComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     angular_material,
-    firebase_modules,
     FormsModule, 
     ReactiveFormsModule, MatTableModule, MatPaginatorModule, MatSortModule
   ],
-  providers: [Globals],
-  bootstrap: [AppComponent]
+  providers: [],
+  bootstrap: [AppComponent],
+  entryComponents: [ViewBasketEditComponent]
 })
 export class AppModule { }

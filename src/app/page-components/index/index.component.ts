@@ -1,17 +1,9 @@
 import { Component, OnInit, ChangeDetectorRef } from "@angular/core";
-import {
-  FormControl,
-  Validators
-} from "@angular/forms";
+import { FormControl } from "@angular/forms";
 import { Router } from "@angular/router";
-import { DataService } from 'src/app/data.service';
-
-/*export class MyErrorStateMatcher implements ErrorStateMatcher {
-  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-    const isSubmitted = form && form.submitted;
-    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
-  }
-}*/
+import { DataService, recipe } from "src/app/data.service";
+import { Observable } from "rxjs";
+import { map, startWith } from "rxjs/operators";
 
 @Component({
   selector: "app-index",
@@ -19,22 +11,53 @@ import { DataService } from 'src/app/data.service';
   styleUrls: ["./index.component.css"]
 })
 export class IndexComponent implements OnInit {
-  emailFormControl = new FormControl("", [
-    Validators.required,
-    Validators.email
-  ]);
+  myControl = new FormControl();
+  recipies: recipe[] = [];
+  filteredOptions: Observable<recipe[]>;
 
   basket_amount: number = 0;
 
-  constructor(private dataservice: DataService, private router: Router,private changedetectorref:ChangeDetectorRef) {}
+  constructor(
+    private dataservice: DataService,
+    private router: Router,
+    private changedetectorref: ChangeDetectorRef
+  ) {}
 
   ngOnInit() {
+    this.recipies = [];
+    //Parsing the observable we got from the data.service.ts
+    this.dataservice.get_recipies().subscribe(item => {
+      item.forEach(element => {
+        this.recipies.push(element as recipe);
+      });
+    });
     this.refresh();
+    this.filteredOptions = this.myControl.valueChanges.pipe(
+      startWith(""),
+      map(value => (typeof value === "string" ? value : value.name)),
+      map(name => (name ? this._filter(name) : this.recipies.slice()))
+    );
   }
 
-  refresh(){
+  index_search_detail_navigation(recipe:recipe){
+    console.log(recipe);
+  }
+
+
+  displayFn(recipe?: recipe): string | undefined {
+    return recipe ? recipe.name : undefined;
+  }
+
+  private _filter(name: string): recipe[] {
+    const filterValue = name.toLowerCase();
+
+    return this.recipies.filter(
+      recipe => recipe.name.toLowerCase().indexOf(filterValue) === 0
+    );
+  }
+
+  refresh() {
     this.dataservice.get_BasketItemAmount().subscribe(value => {
-      console.log(value);
       this.basket_amount = value;
     });
     this.changedetectorref.detectChanges();
@@ -42,6 +65,14 @@ export class IndexComponent implements OnInit {
 
   routeToRecipeView() {
     this.router.navigate(["/"]);
+  }
+
+  routeToIngredientView() {
+    this.router.navigate(["/view_ingredients"]);
+  }
+
+  routeToPageContact() {
+    this.router.navigate(["/view_page_contact"]);
   }
 
   routeToAddRecipe() {
