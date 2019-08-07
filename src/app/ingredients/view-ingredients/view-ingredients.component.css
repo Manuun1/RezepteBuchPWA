@@ -24,8 +24,17 @@ h2 {
   text-align: center;
 }
 
+.mat-card-actions_buttons {
+  height: 3%;
+  margin-top: 5%;
+  margin-right: 2%;
+  border: 1.5px;
+  border-style: solid;
+  border-color: black;
+  font-family: "Courgette", cursive;
+}
+
 .css_grid {
-  /*background-image: url("/assets/images/wood_background.jpg");*/
   margin-left: 5%;
   margin-right: 5%;
   margin-top: 5%;

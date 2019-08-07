@@ -160,7 +160,8 @@ const Recipies: recipe[] = [
       { key: "Orangen", amount: 100 },
       { key: "Weißwein", amount: 100 }
     ],
-    description: "Die Möhren und den Fenchel klein würfeln. Zwiebel und Knoblauch in feine Streifen schneiden. Die Butter in einer Pfanne mit Deckel erhitzen, das Gemüse ca. 5 Minuten bissfest dünsten.\nIn der Zwischenzeit die Orange filetieren, die Trennhäute ausdrücken und den Saft auffangen. Den Zucker zum Gemüse geben, kurz karamellisieren, salzen, pfeffern und mit dem Orangensaft und Wein ablöschen.\nDen Lachs in zwei gleichgroße Steaks teilen und mit etwas Salz und Pfeffer würzen. Auf das Gemüse legen und den Deckel auf die Pfanne setzen. Bei mittlerer Hitze ca. 5 Min. dünsten. Dann den Dill hinzufügen, weitere 5 Minuten in der geschlossenen Pfanne dünsten.\nDen Lachs aus der Pfanne nehmen, auf zwei Tellern anrichten. Das Gemüse evtl. noch einmal mit Salz und Pfeffer abschmecken, anrichten.\nDazu passen Bandnudeln, Baguette oder Reis, aber eigentlich braucht man keine zusätzliche Sättigungsbeilage. ",
+    description:
+      "Die Möhren und den Fenchel klein würfeln. Zwiebel und Knoblauch in feine Streifen schneiden. Die Butter in einer Pfanne mit Deckel erhitzen, das Gemüse ca. 5 Minuten bissfest dünsten.\nIn der Zwischenzeit die Orange filetieren, die Trennhäute ausdrücken und den Saft auffangen. Den Zucker zum Gemüse geben, kurz karamellisieren, salzen, pfeffern und mit dem Orangensaft und Wein ablöschen.\nDen Lachs in zwei gleichgroße Steaks teilen und mit etwas Salz und Pfeffer würzen. Auf das Gemüse legen und den Deckel auf die Pfanne setzen. Bei mittlerer Hitze ca. 5 Min. dünsten. Dann den Dill hinzufügen, weitere 5 Minuten in der geschlossenen Pfanne dünsten.\nDen Lachs aus der Pfanne nehmen, auf zwei Tellern anrichten. Das Gemüse evtl. noch einmal mit Salz und Pfeffer abschmecken, anrichten.\nDazu passen Bandnudeln, Baguette oder Reis, aber eigentlich braucht man keine zusätzliche Sättigungsbeilage. ",
     required_time: 60,
     difficulty: difficulties[2],
     image: "wildlachs.jpg"
@@ -309,50 +310,36 @@ export class DataService {
     return ingredients_list;
   }
 
-  //Get all ingredients, that are available in the data.service.ts
-  /*get_allIngredients(): Observable<any> {
-    let ingredients: ingredient[] = [];
-
-    Ingredients.forEach(function(key, value) {
-      ingredients.push({
-        name: value,
-        unit: key.unit,
-        category: key.category
-      } as ingredient);
-    });
-
-    return of(ingredients);
-  }*/
-
   get_allIngredients(): Observable<any> {
     let ingredients: any[] = [];
 
-    Ingredients.forEach(function(value,key){
+    //Generate a 2D array with the ingredients grouped by category
+    Ingredients.forEach(function(value, key) {
       let found = false;
-      ingredients.forEach(function(object){
-        
-        if(object.key==value.category)
-        {
-          found=true;
+      //Traverse all entries in the Ingredient Hash Map
+      ingredients.forEach(function(object) {
+        //Check if the ingredient category already persists in the new 2d array
+        if (object.key == value.category) {
+          found = true;
         }
       });
-      if(found==false){
-        ingredients.push({key:value.category,data:[]});
+      if (found == false) {
+        let data: ingredient[] = [];
+        //Gather all entries from the Ingredient Hash Map with the respective category.
+        Ingredients.forEach(function(val, key_val) {
+          //Manually replicating a join operation from SQL
+          if (val.category == value.category) {
+            data.push({
+              name: key_val,
+              unit: val.unit,
+              category: val.category
+            } as ingredient);
+          }
+        });
+
+        ingredients.push({ key: value.category, data: data });
       }
     });
-
-    Ingredients.forEach(function(object){
-      
-    });
-
-    /*Ingredients.forEach(function(key, value) {
-      ingredients.push({
-        name: value,
-        unit: key.unit,
-        category: key.category
-      } as ingredient);
-    });*/
-
     return of(ingredients);
   }
 

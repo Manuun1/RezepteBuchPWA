@@ -8,7 +8,7 @@ import { DataService, ingredient } from 'src/app/data.service';
 })
 export class ViewIngredientsComponent implements OnInit {
   panelOpenState = false;
-  ingredients:ingredient[];
+  ingredients:any[];
 
   constructor(private dataservice: DataService) { }
 
