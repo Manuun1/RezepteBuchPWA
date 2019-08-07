@@ -10,7 +10,7 @@
         />
       </mat-form-field>
 
-      <div class="mat-elevation-z8">
+      <div>
         <mat-table [dataSource]="dataSource" matSort>
           <ng-container matColumnDef="name">
             <mat-header-cell *matHeaderCellDef mat-sort-header>
@@ -42,14 +42,13 @@
 
           <ng-container matColumnDef="button">
             <mat-header-cell *matHeaderCellDef mat-sort-header>
-              
             </mat-header-cell>
             <mat-cell *matCellDef="let row">
-              <button
-                mat-button
-                (click)="deleteBasketItem(row)"
-              >
+              <button mat-button (click)="deleteBasketItem(row)">
                 <mat-icon>delete_forever</mat-icon>
+              </button>
+              <button mat-button (click)="editBasketItem(row)">
+                <mat-icon>edit</mat-icon>
               </button>
             </mat-cell>
           </ng-container>
@@ -62,7 +61,7 @@
 
         <mat-paginator
           #BasketPaginator
-          [pageSizeOptions]="[5, 10, 20]"
+          [pageSizeOptions]="[25, 50, 100]"
         ></mat-paginator>
       </div>
     </mat-card-content>

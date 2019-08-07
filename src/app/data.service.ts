@@ -64,10 +64,24 @@ const difficulties: difficulty[] = [
   }
 ];
 
-const categories: category[] = [
-  {
-    name: "Obst und Gemüse"
-  }
+const categories: string[] = [
+  "Getreide und Getreideprodukte",
+  "Kartoffeln und Kartoffelprodukte",
+  "Obst, Obsterzeugnisse und Trockenobst",
+  "Gemüse und Hülsenfrüchte",
+  "Nüsse und Samen",
+  "Fleisch und Fleischwaren",
+  "Fisch und Fischprodukte",
+  "Milch und Milchprodukte",
+  "Eier und Eierspeisen",
+  "Öle und Fette",
+  "Süßwaren und Zucker",
+  "Konserven",
+  "Fertiggerichte",
+  "Saucen und Würzmittel",
+  "Gewürze und Kräuter",
+  "Alkoholfreie Getränke",
+  "Alkoholhaltige Getränke"
 ];
 
 const Basket: ingredient_amount[] = [
@@ -76,21 +90,37 @@ const Basket: ingredient_amount[] = [
   { key: "Spinat", amount: 200 }
 ];
 
+const Units = [
+  "Gramm",
+  "Milligramm",
+  "Kilogramm",
+  "Stück",
+  "Liter",
+  "Milliliter"
+];
+
 //Using a Hashmap for the ingredients
 const Ingredients = new Map([
-  ["Banane", { unit: "Stück", category: "to be determined" }],
-  ["Spinat", { unit: "Gramm", category: "to be determined" }],
-  ["Pasta", { unit: "Gramm", category: "to be determined" }],
-  ["Heidelbeeren", { unit: "Gramm", category: "to be determined" }],
-  ["Eier", { unit: "Stück", category: "to be determined" }],
-  ["Mehl", { unit: "Gramm", category: "to be determined" }],
-  ["Sahne", { unit: "Milliliter", category: "to be determined" }],
-  ["Zucker", { unit: "Gramm", category: "to be determined" }],
-  ["Tomaten", { unit: "Gramm", category: "to be determined" }],
-  ["Apfel", { unit: "Stück", category: "to be determined" }],
-  ["Milch", { unit: "Milliliter", category: "to be determined" }],
-  ["Orangen", { unit: "Stück", category: "to be determined" }],
-  ["Gans", { unit: "Gramm", category: "to be determined" }]
+  ["Banane", { unit: "Stück", category: categories[2] }],
+  ["Spinat", { unit: "Gramm", category: categories[3] }],
+  ["Pasta", { unit: "Gramm", category: categories[0] }],
+  ["Heidelbeeren", { unit: "Gramm", category: categories[2] }],
+  ["Eier", { unit: "Stück", category: categories[8] }],
+  ["Mehl", { unit: "Gramm", category: categories[0] }],
+  ["Sahne", { unit: "Milliliter", category: categories[7] }],
+  ["Zucker", { unit: "Gramm", category: categories[10] }],
+  ["Tomaten", { unit: "Gramm", category: categories[3] }],
+  ["Brombeeren", { unit: "Gramm", category: categories[2] }],
+  ["Johannisbeeren", { unit: "Gramm", category: categories[2] }],
+  ["Apfel", { unit: "Stück", category: categories[2] }],
+  ["Milch", { unit: "Milliliter", category: categories[7] }],
+  ["Orangen", { unit: "Stück", category: categories[2] }],
+  ["Wasser", { unit: "Milliliter", category: categories[15] }],
+  ["Gans", { unit: "Gramm", category: categories[5] }],
+  ["Wildlachs", { unit: "Gramm", category: categories[6] }],
+  ["Möhre", { unit: "Gramm", category: categories[3] }],
+  ["Fenchelknolle", { unit: "Stück", category: categories[3] }],
+  ["Weißwein", { unit: "Milliliter", category: categories[16] }]
 ]);
 
 const Recipies: recipe[] = [
@@ -108,18 +138,31 @@ const Recipies: recipe[] = [
     image: "grüne-pasta.jpg"
   },
   {
-    name: "Erdbeer Smoothie",
-    ingredients: [],
-    description: "to be added",
-    required_time: 20,
+    name: "Frozen Berry Drink",
+    ingredients: [
+      { key: "Heidelbeeren", amount: 50 },
+      { key: "Wasser", amount: 200 },
+      { key: "Brombeeren", amount: 50 },
+      { key: "Johannisbeeren", amount: 50 }
+    ],
+    description:
+      "Über Nacht Wasser im Gefrierfach zu Eis gefrieren lassen. Daraus dann Crushed Ice machen.\nHeidelbeeren Brombeeren und Johannisbeeren zusammen in eine Schüssel geben und zermahlen.\nDanach alles in einen Mixer mit dem Wasser geben. In einem Glas servieren und mit dem Chrused Ice auffüllen.\nWahlweise mit einer Zitrone und einer Zimtstange dekorieren.",
+    required_time: 10,
     difficulty: difficulties[0],
     image: "strawberry_juice_jug.jpg"
   },
   {
-    name: "Wildlachs auf Gemüse Garnitur",
-    ingredients: [],
-    description: "to be added",
-    required_time: 20,
+    name: "Wildlachs auf Fenchel Gemüse Garnitur",
+    ingredients: [
+      { key: "Wildlachs", amount: 250 },
+      { key: "Möhre", amount: 50 },
+      { key: "Fenchelknolle", amount: 1 },
+      { key: "Orangen", amount: 100 },
+      { key: "Weißwein", amount: 100 }
+    ],
+    description:
+      "Die Möhren und den Fenchel klein würfeln. Zwiebel und Knoblauch in feine Streifen schneiden. Die Butter in einer Pfanne mit Deckel erhitzen, das Gemüse ca. 5 Minuten bissfest dünsten.\nIn der Zwischenzeit die Orange filetieren, die Trennhäute ausdrücken und den Saft auffangen. Den Zucker zum Gemüse geben, kurz karamellisieren, salzen, pfeffern und mit dem Orangensaft und Wein ablöschen.\nDen Lachs in zwei gleichgroße Steaks teilen und mit etwas Salz und Pfeffer würzen. Auf das Gemüse legen und den Deckel auf die Pfanne setzen. Bei mittlerer Hitze ca. 5 Min. dünsten. Dann den Dill hinzufügen, weitere 5 Minuten in der geschlossenen Pfanne dünsten.\nDen Lachs aus der Pfanne nehmen, auf zwei Tellern anrichten. Das Gemüse evtl. noch einmal mit Salz und Pfeffer abschmecken, anrichten.\nDazu passen Bandnudeln, Baguette oder Reis, aber eigentlich braucht man keine zusätzliche Sättigungsbeilage. ",
+    required_time: 60,
     difficulty: difficulties[2],
     image: "wildlachs.jpg"
   },
@@ -267,22 +310,40 @@ export class DataService {
     return ingredients_list;
   }
 
-  //Get all ingredients, that are available in the data.service.ts
-  get_allIngredients() {
-    let ingredients: ingredient[] = [];
+  get_allIngredients(): Observable<any> {
+    let ingredients: any[] = [];
 
-    Ingredients.forEach(function(key, value) {
-      ingredients.push({
-        name: value,
-        unit: key.unit,
-        category: key.category
-      } as ingredient);
+    //Generate a 2D array with the ingredients grouped by category
+    Ingredients.forEach(function(value, key) {
+      let found = false;
+      //Traverse all entries in the Ingredient Hash Map
+      ingredients.forEach(function(object) {
+        //Check if the ingredient category already persists in the new 2d array
+        if (object.key == value.category) {
+          found = true;
+        }
+      });
+      if (found == false) {
+        let data: ingredient[] = [];
+        //Gather all entries from the Ingredient Hash Map with the respective category.
+        Ingredients.forEach(function(val, key_val) {
+          //Manually replicating a join operation from SQL
+          if (val.category == value.category) {
+            data.push({
+              name: key_val,
+              unit: val.unit,
+              category: val.category
+            } as ingredient);
+          }
+        });
+
+        ingredients.push({ key: value.category, data: data });
+      }
     });
-
-    return ingredients;
+    return of(ingredients);
   }
 
-  get_allBasketItems():Observable<any> {
+  get_allBasketItems(): Observable<any> {
     let res: any[] = [];
     let temp: any;
 
@@ -302,16 +363,16 @@ export class DataService {
     return of(res);
   }
 
-  delete_BasketItem(itemName: string):boolean {
+  delete_BasketItem(itemName: string): boolean {
     let status = false;
     console.log(itemName);
-    
+
     for (let i = 0; i < Basket.length; i++) {
       console.log(Basket[i].key);
-      
+
       if (Basket[i].key == itemName) {
         console.log("found");
-        Basket.splice(i,1);
+        Basket.splice(i, 1);
         status = true;
         break;
       }

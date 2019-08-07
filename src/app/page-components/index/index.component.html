@@ -1,0 +1,60 @@
+<mat-toolbar class="navbar">
+  <mat-toolbar-row class="first_navbar_row">
+    <!--<span>RezepteBuch</span>-->
+    <img class="index_image" src="/assets/images/MainPageIcon.png" />
+    <span class="spacer"></span>
+    <div class="button_group">
+      <button mat-button class="other_button" (click)="routeToRecipeView()">
+        Home
+      </button>
+      <button mat-button class="other_button" (click)="routeToIngredientView()">
+        Zutaten
+      </button>
+      <button mat-button class="other_button" (click)="routeToPageContact()">
+        Kontakt
+      </button>
+      <button
+        mat-button
+        [matBadge]="basket_amount"
+        matBadgePosition="after"
+        matBadgeColor="warn"
+        class="basket_button"
+        (click)="routeToBasketView()"
+        (document:click)="refresh()"
+      >
+        Einkaufswagen
+      </button>
+      <button mat-button class="add_recipe_button" (click)="routeToAddRecipe()">
+        Reiche dein Rezept ein
+      </button>
+    </div>
+  </mat-toolbar-row>
+  <mat-toolbar-row class="second_navbar_row">
+    <span class="search_header">Suche</span>
+    <form class="search">
+      <form class="example-form">
+        <mat-form-field class="example-full-width">
+          <input
+            type="text"
+            placeholder=""
+            aria-label="Assignee"
+            matInput
+            [formControl]="myControl"
+            [matAutocomplete]="auto"
+          />
+          <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+            <mat-option
+              *ngFor="let recipe of recipies"
+              [value]="option"
+              (optionSelected)="index_search_detail_navigation(recipe)"
+            >
+              {{ recipe.name }}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </form>
+    </form>
+    <span class="spacer"></span>
+    <span>hier sollen unterschiedliche Kategorien stehen</span>
+  </mat-toolbar-row>
+</mat-toolbar>

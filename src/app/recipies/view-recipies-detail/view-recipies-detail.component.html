@@ -15,7 +15,7 @@
         <h2>Zubereitung</h2>
         <p>
           <strong>Schwierigkeit:</strong> {{ recipe.difficulty.name }}
-          <strong>Erforderliche Zeit:</strong>{{ recipe.required_time }}
+          <strong>Erforderliche Zeit:</strong> {{ recipe.required_time }} Minuten
         </p>
         <p>
           {{ recipe.description }}
@@ -25,7 +25,7 @@
         <button
           mat-button
           (click)="routeToRecipeView()"
-          class="mat-card-actions_buttons"
+          class="mat-card-actions_back_button"
         >
           <mat-icon>arrow_back</mat-icon>
         </button>
@@ -36,6 +36,10 @@
         >
           Zutaten in den Einkaufswagen
         </button>
+        <br /><br />
+        <span *ngIf="show_ingredients_added" class="amount_ingredients_added">
+          Zutaten für {{ amount_ingredients_added }} Portionen hinzugefügt
+        </span>
       </div>
     </mat-card-content>
     <mat-card-actions> </mat-card-actions>

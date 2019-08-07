@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>Welche Menge soll es sein?</h1>
+<div mat-dialog-content>
+  <span class="input_description">Menge:</span>
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.row.amount">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()"><mat-icon>arrow_back</mat-icon></button>
+  <button mat-button [mat-dialog-close]="data.row">Ok</button>
+</div>

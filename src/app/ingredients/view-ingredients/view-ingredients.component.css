@@ -1,0 +1,47 @@
+.image_view {
+  max-width: 100%;
+  max-height: 100%;
+  margin: auto;
+  object-fit: cover;
+}
+.recipe_card {
+  font-family: "Cookie", cursive;
+}
+.recipe_card_name {
+  font-size: 30px;
+}
+.header_writing_div {
+  margin-top: 5%;
+}
+h2 {
+  font-family: "Amatic SC", cursive;
+  font-size: 50px;
+}
+
+.header_writing {
+  font-family: "Amatic SC", cursive;
+  font-size: 30px;
+  text-align: center;
+}
+
+.mat-card-actions_buttons {
+  height: 3%;
+  margin-top: 5%;
+  margin-right: 2%;
+  border: 1.5px;
+  border-style: solid;
+  border-color: black;
+  font-family: "Courgette", cursive;
+}
+
+.css_grid {
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: 100%;
+  grid-column-gap: 15px;
+  grid-row-gap: 15px;
+}

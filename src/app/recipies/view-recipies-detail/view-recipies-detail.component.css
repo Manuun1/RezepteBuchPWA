@@ -36,10 +36,19 @@ p {
 }
 
 .mat-card-actions_buttons {
-  height: 3%;
   margin-right: 2%;
   border: 1.5px;
   border-style: solid;
   border-color: black;
   font-family: "Courgette", cursive;
+}
+.mat-card-actions_back_button{
+  margin-right: 2%;
+  border: 1.5px;
+  border-style: solid;
+  border-color: black;
+}
+.amount_ingredients_added{
+  font-family: "Amatic SC", cursive;
+  font-size: 30px;
 }
