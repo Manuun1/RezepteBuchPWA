@@ -310,7 +310,7 @@ export class DataService {
     return ingredients_list;
   }
 
-  get_allIngredients(): Observable<any> {
+  get_allIngredients2DArray(): Observable<any> {
     let ingredients: any[] = [];
 
     //Generate a 2D array with the ingredients grouped by category
@@ -336,9 +336,20 @@ export class DataService {
             } as ingredient);
           }
         });
-
         ingredients.push({ key: value.category, data: data });
       }
+    });
+    return of(ingredients);
+  }
+
+  get_allIngredients1DArray(): Observable<any> {
+    let ingredients: ingredient[] = [];
+    Ingredients.forEach(function(value, key) {
+      ingredients.push({
+        name: key,
+        unit: value.unit,
+        category: value.category
+      } as ingredient);
     });
     return of(ingredients);
   }
@@ -381,12 +392,6 @@ export class DataService {
   }
 
   get_BasketItemAmount(): Observable<any> {
-    /*let Basket_length_Observable = new Observable(observer => {
-      console.log("item");
-      observer.next(Basket.length);
-    });*/
-    //return Basket_length_Observable;
-
     return of(Basket.length);
   }
 

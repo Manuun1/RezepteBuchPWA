@@ -13,7 +13,7 @@ export class ViewIngredientsComponent implements OnInit {
   constructor(private dataservice: DataService) { }
 
   ngOnInit() {
-    this.dataservice.get_allIngredients().subscribe(item => this.ingredients=item);
+    this.dataservice.get_allIngredients2DArray().subscribe(item => this.ingredients=item);
     console.log(this.ingredients);
   }
 

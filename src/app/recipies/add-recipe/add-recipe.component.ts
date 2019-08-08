@@ -50,7 +50,15 @@ export class AddRecipeComponent implements OnInit {
 
   ngOnInit() {
     this.difficulties = this.dataservice.get_difficulties();
-    this.dataservice.get_allIngredients().subscribe(item => this.ingredients=item);
+    this.dataservice.get_allIngredients1DArray().subscribe(item => this.ingredients=item);
+
+    console.log(this.ingredients);
+
+    /*item.forEach(function(category) {
+      category.data.forEach(function(ing){
+        console.log(ing);
+        this.ingredients.push(ing as ingredient);
+      }).bind(this.ingredients)*/
 
     this.form_basics = this._formBuilder.group({
       Rezeptname: ["", Validators.required]
@@ -111,7 +119,7 @@ export class AddRecipeComponent implements OnInit {
     })
   }
 
-  add_recipe(recipe_name:string,selected_difficulty: number,description:string,duration:number) {
+  add_recipe(recipe_name:string,selected_difficulty: number,description:string,duration:number,recipe_image_link:string) {
 
     let ingredient_amount:ingredient_amount[] = [];
     let difficulty:difficulty;
@@ -131,7 +139,7 @@ export class AddRecipeComponent implements OnInit {
         required_time: duration,
         description:description,
         difficulty:difficulty,
-        image:"schokotörtchen.jpg"
+        image:recipe_image_link
       }
       let response = this.dataservice.add_recipe(this.new_recipe);
       console.log("recipe was added");

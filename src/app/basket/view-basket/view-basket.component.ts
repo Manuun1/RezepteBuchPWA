@@ -15,8 +15,8 @@ export class ViewBasketComponent implements OnInit {
   displayedColumns: string[] = ["name", "amount", "unit", "category", "button"];
   dataSource: MatTableDataSource<ingredient_amount_unit>;
 
-  @ViewChild("BasketPaginator") paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild("BasketPaginator",{static:true}) paginator: MatPaginator;
+  @ViewChild(MatSort,{static:true}) sort: MatSort;
 
   constructor(private dataservice: DataService, private router: Router, private changedetectorref:ChangeDetectorRef,public dialog: MatDialog) {}
 

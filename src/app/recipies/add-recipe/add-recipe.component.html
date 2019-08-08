@@ -25,6 +25,10 @@
                 </mat-option>
               </mat-select>
             </mat-form-field>
+            <h3>Füge hier ein Bild zu deinem Rezept ein</h3>
+            <mat-form-field>
+              <input matInput #recipe_image placeholder="Link zum Foto des Bildes" required />
+            </mat-form-field>
             <div>
               <button
                 mat-button
@@ -176,7 +180,8 @@
                   recipe_name.value,
                   difficulty.value,
                   description.value,
-                  duration.value
+                  duration.value,
+                  recipe_image.value
                 )
               "
               class="mat-card-actions_buttons"

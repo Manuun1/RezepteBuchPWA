@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { DataService, recipe } from "src/app/data.service";
 import { NavigationExtras, Router } from "@angular/router";
 
+
 @Component({
   selector: "app-view-recipies",
   templateUrl: "./view-recipies.component.html",
@@ -22,9 +23,10 @@ export class ViewRecipiesComponent implements OnInit {
       item.forEach(element => {
         //Add this correct path prefix to every image reference, in order to keep the declaration in the dataservice lightweight
         //if condition is a workaround to avoid putting ./assets/images in the array multiple times.
-        if (element.image.indexOf("assets/images") == -1) {
+        if (element.image.indexOf("assets/images") == -1 && element.image.indexOf("http")==-1) {
           element.image = "./assets/images/" + element.image;
         }
+        console.log(element.image);
         this.recipies.push(element as recipe);
       });
     });
