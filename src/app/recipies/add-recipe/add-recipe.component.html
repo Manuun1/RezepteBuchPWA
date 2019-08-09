@@ -2,24 +2,30 @@
   <mat-card class="recipe_card">
     <mat-card-content class="material_card_content">
       <h2>Reiche hier dein Rezept ein</h2>
-      <mat-horizontal-stepper
-        [linear]="isLinear"
-        #stepper
-        *ngIf="display_stepper"
-      >
+      <mat-horizontal-stepper [linear]="true" #stepper *ngIf="display_stepper">
         <mat-step [stepControl]="form_basics">
           <form [formGroup]="form_basics">
             <ng-template matStepLabel class="stepper">Basics</ng-template>
             <h3>Wie soll dein Rezept heißen?</h3>
             <mat-form-field>
-              <input matInput #recipe_name placeholder="Rezeptname" required />
+              <input
+                matInput
+                placeholder="Rezeptname"
+                formControlName="recipeName"
+                [(ngModel)]="recipeName"
+                required
+              />
             </mat-form-field>
             <h3>Wie schwer ist die Zubereitung deines Rezeptes?</h3>
             <mat-form-field>
-              <mat-select #difficulty>
+              <mat-select
+                #difficulty
+                formControlName="difficulty"
+                
+              >
                 <mat-option
                   *ngFor="let difficulty of difficulties"
-                  [value]="difficulty.value"
+                  [value]="difficulty"
                 >
                   {{ difficulty.name }}
                 </mat-option>
@@ -27,7 +33,13 @@
             </mat-form-field>
             <h3>Füge hier ein Bild zu deinem Rezept ein</h3>
             <mat-form-field>
-              <input matInput #recipe_image placeholder="Link zum Foto des Bildes" required />
+              <input
+                matInput
+                placeholder="Link zum Foto des Bildes"
+                formControlName="recipeImageLink"
+                [(ngModel)]="recipeImageLink"
+                required
+              />
             </mat-form-field>
             <div>
               <button
@@ -58,7 +70,7 @@
                 placeholder="Zutat"
                 matInput
                 #Zutat
-                [formControl]="myControl"
+                [value]="Zutat"
                 [matAutocomplete]="auto"
               />
               <mat-autocomplete
@@ -73,12 +85,14 @@
                 </mat-option>
               </mat-autocomplete>
             </mat-form-field>
+            {{ selected_ingredient.unit }}
             <mat-form-field>
               <input
                 matInput
                 type="number"
                 #amount
                 placeholder="Anzahl"
+                type="number"
                 required
               />
             </mat-form-field>
@@ -120,14 +134,13 @@
               <textarea
                 class="input_description"
                 matInput
-                #description
                 cdkTextareaAutosize
                 #autosize="cdkTextareaAutosize"
                 placeholder="Beschreibung"
-                formControlName="thirdCtrl"
+                [(ngModel)]="description"
+                formControlName="description"
                 cdkAutosizeMinRows="10"
                 cdkAutosizeMaxRows="100"
-                [(ngModel)]="input_description"
               ></textarea>
             </mat-form-field>
             <h3>
@@ -137,8 +150,9 @@
               <input
                 matInput
                 type="number"
-                #duration
                 placeholder="Anzahl"
+                formControlName="requiredTime"
+                [(ngModel)]="requiredTime"
                 required
               />
             </mat-form-field>
@@ -154,7 +168,6 @@
                 mat-button
                 matStepperNext
                 class="mat-card-actions_buttons"
-                (document:click)="generate_recipe_summary()"
               >
                 Weiter
               </button>
@@ -163,8 +176,27 @@
         </mat-step>
         <mat-step>
           <ng-template matStepLabel class="stepper">Done</ng-template>
-          <h3>Dein Rezept im Überblick</h3>
-          {{ recipe_summary }}
+          <h2>Dein Rezept im Überblick</h2>
+          {{ recipeName }}
+          <br />
+          <img class="image_view" [src]="recipeImageLink" />
+          <h3>Zutaten</h3>
+          <p *ngFor="let ingredient_with_amount of selected_ingredients">
+            {{ ingredient_with_amount.amount }}
+            {{ ingredient_with_amount.unit }}
+            {{ ingredient_with_amount.name }}
+          </p>
+          <h3>Zubereitung</h3>
+          <p>
+            <strong>Schwierigkeit:</strong>{{ difficulty.name }}
+            <strong>Erforderliche Zeit:</strong> {{ requiredTime }} Minuten
+          </p>
+          <p>
+            {{ description }}
+          </p>
+          <br />
+          <br />
+
           <div>
             <button
               mat-button
@@ -175,15 +207,7 @@
             </button>
             <button
               mat-button
-              (click)="
-                add_recipe(
-                  recipe_name.value,
-                  difficulty.value,
-                  description.value,
-                  duration.value,
-                  recipe_image.value
-                )
-              "
+              (click)="add_recipe()"
               class="mat-card-actions_buttons"
             >
               Absenden
