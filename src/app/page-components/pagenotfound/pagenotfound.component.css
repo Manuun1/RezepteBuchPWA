@@ -1,0 +1,26 @@
+h2 {
+  font-family: "Amatic SC", cursive;
+  font-size: 50px;
+}
+.css_grid {
+  /*background-image: url("/assets/images/wood_background.jpg");*/
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: 100%;
+  grid-column-gap: 15px;
+  grid-row-gap: 15px;
+}
+.icon {
+  max-width: 50px;
+  max-height: 50px;
+}
+.mat-card-actions_back_button{
+    margin-right: 2%;
+    border: 1.5px;
+    border-style: solid;
+    border-color: black;
+  }
