@@ -16,6 +16,7 @@ import { ViewBasketEditComponent } from './basket/view-basket-edit/view-basket-e
 import { ViewIngredientsComponent } from './ingredients/view-ingredients/view-ingredients.component';
 import { ContactComponent } from './page-components/contact/contact.component';
 import { PagenotfoundComponent } from './page-components/pagenotfound/pagenotfound.component';
+import { AddIngredientComponent } from './ingredients/add-ingredient/add-ingredient.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { PagenotfoundComponent } from './page-components/pagenotfound/pagenotfou
     ViewBasketEditComponent,
     ViewIngredientsComponent,
     ContactComponent,
-    PagenotfoundComponent
+    PagenotfoundComponent,
+    AddIngredientComponent
   ],
   imports: [
     BrowserModule,
@@ -40,6 +42,6 @@ import { PagenotfoundComponent } from './page-components/pagenotfound/pagenotfou
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [ViewBasketEditComponent]
+  entryComponents: [ViewBasketEditComponent,AddIngredientComponent]
 })
 export class AppModule { }

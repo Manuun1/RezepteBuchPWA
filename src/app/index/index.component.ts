@@ -6,13 +6,6 @@ import {
 import { Router } from "@angular/router";
 import { DataService } from "../data.service";
 
-/*export class MyErrorStateMatcher implements ErrorStateMatcher {
-  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-    const isSubmitted = form && form.submitted;
-    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
-  }
-}*/
-
 @Component({
   selector: "app-index",
   templateUrl: "./index.component.html",
