@@ -2,7 +2,7 @@
   <mat-card class="recipe_card">
     <mat-card-content class="material_card_content">
       <h2>Reiche hier dein Rezept ein</h2>
-      <mat-horizontal-stepper [linear]="true" #stepper *ngIf="display_stepper">
+      <mat-horizontal-stepper linear="true" #stepper *ngIf="display_stepper">
         <mat-step [stepControl]="form_basics">
           <form [formGroup]="form_basics">
             <ng-template matStepLabel class="stepper">Basics</ng-template>

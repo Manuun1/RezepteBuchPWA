@@ -19,7 +19,6 @@ export interface ingredient_with_amount {
 })
 export class AddRecipeComponent implements OnInit {
   myControl = new FormControl();
-  isLinear = false;
 
   //Form Controls
   form_basics: FormGroup;

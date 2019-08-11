@@ -55,8 +55,6 @@ export class ViewBasketComponent implements OnInit {
     });
   }
   
-
-
   refresh(){
     this.basketService
       .get_allBasketItems()

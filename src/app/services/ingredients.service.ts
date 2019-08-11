@@ -19,7 +19,7 @@ export interface ingredient_amount_unit {
   category: string;
 }
 
-const Units = [
+const units = [
   "Gramm",
   "Milligramm",
   "Kilogramm",
