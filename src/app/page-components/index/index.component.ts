@@ -1,9 +1,10 @@
 import { Component, OnInit, ChangeDetectorRef } from "@angular/core";
 import { FormControl } from "@angular/forms";
 import { Router } from "@angular/router";
-import { DataService, recipe } from "src/app/data.service";
 import { Observable } from "rxjs";
 import { map, startWith } from "rxjs/operators";
+import { RecipiesService, recipe } from 'src/app/services/recipies.service';
+import { BasketService } from 'src/app/services/basket.service';
 
 @Component({
   selector: "app-index",
@@ -18,7 +19,8 @@ export class IndexComponent implements OnInit {
   basket_amount: number = 0;
 
   constructor(
-    private dataservice: DataService,
+    private recipiesService: RecipiesService,
+    private basketService: BasketService,
     private router: Router,
     private changedetectorref: ChangeDetectorRef
   ) {}
@@ -26,7 +28,7 @@ export class IndexComponent implements OnInit {
   ngOnInit() {
     this.recipies = [];
     //Parsing the observable we got from the data.service.ts
-    this.dataservice.get_recipies().subscribe(item => {
+    this.recipiesService.get_recipies().subscribe(item => {
       item.forEach(element => {
         this.recipies.push(element as recipe);
       });
@@ -57,7 +59,7 @@ export class IndexComponent implements OnInit {
   }
 
   refresh() {
-    this.dataservice.get_BasketItemAmount().subscribe(value => {
+    this.basketService.get_BasketItemAmount().subscribe(value => {
       this.basket_amount = value;
     });
     this.changedetectorref.detectChanges();

@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { DataService, recipe } from "src/app/data.service";
 import { NavigationExtras, Router } from "@angular/router";
+import { RecipiesService, recipe } from 'src/app/services/recipies.service';
 
 
 @Component({
@@ -12,14 +12,14 @@ export class ViewRecipiesComponent implements OnInit {
   recipies: recipe[] = [];
 
   constructor(
-    private dataservice: DataService,
+    private recipeService: RecipiesService,
     private router: Router
   ) {}
 
   ngOnInit() {
     this.recipies = [];
     //Parsing the observable we got from the data.service.ts
-    this.dataservice.get_recipies().subscribe(item => {
+    this.recipeService.get_recipies().subscribe(item => {
       item.forEach(element => {
         //Add this correct path prefix to every image reference, in order to keep the declaration in the dataservice lightweight
         //if condition is a workaround to avoid putting ./assets/images in the array multiple times.

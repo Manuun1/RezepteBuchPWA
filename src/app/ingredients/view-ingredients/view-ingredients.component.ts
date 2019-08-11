@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { DataService, ingredient } from 'src/app/data.service';
 import { MatDialog } from '@angular/material';
 import { AddIngredientComponent } from '../add-ingredient/add-ingredient.component';
+import { IngredientsService } from 'src/app/services/ingredients.service';
 
 @Component({
   selector: 'app-view-ingredients',
@@ -12,10 +12,10 @@ export class ViewIngredientsComponent implements OnInit {
   panelOpenState = false;
   ingredients:any[];
 
-  constructor(private dataservice: DataService,private changedetectorref:ChangeDetectorRef,public dialog: MatDialog) { }
+  constructor(private ingredientsService: IngredientsService,private changedetectorref:ChangeDetectorRef,public dialog: MatDialog) { }
 
   ngOnInit() {
-    this.dataservice.get_allIngredients2DArray().subscribe(item => this.ingredients=item);
+    this.ingredientsService.get_allIngredients2DArray().subscribe(item => this.ingredients=item);
     console.log(this.ingredients);
   }
 

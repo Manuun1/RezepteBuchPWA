@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
-import { DataService, recipe, ingredient } from "src/app/data.service";
+import { IngredientsService, ingredient } from 'src/app/services/ingredients.service';
+import { BasketService } from 'src/app/services/basket.service';
+import {recipe} from 'src/app/services/recipies.service';
 
 export interface testing {
   name: string;
@@ -21,11 +23,11 @@ export class ViewRecipiesDetailComponent implements OnInit {
   show_ingredients_added: boolean = false;
   amount_ingredients_added: number = 0;
 
-  constructor(private router: Router, private dataservice: DataService) {
+  constructor(private router: Router, private ingredientService: IngredientsService, private basketService: BasketService) {
     if (this.router.getCurrentNavigation().extras.state) {
       this.recipe = this.router.getCurrentNavigation().extras.state.recipe;
 
-      this.recipe_ingredients = dataservice.get_recipe_ingredients(
+      this.recipe_ingredients = ingredientService.get_recipe_ingredients(
         this.recipe.ingredients
       );
     }
@@ -43,7 +45,7 @@ export class ViewRecipiesDetailComponent implements OnInit {
   }
 
   ingredientsAddToBasket() {
-    this.dataservice.ingredients_addToBasket(this.recipe);
+    this.basketService.ingredients_addToBasket(this.recipe);
     this.show_ingredients_added = true;
     this.amount_ingredients_added += 1;
   }
