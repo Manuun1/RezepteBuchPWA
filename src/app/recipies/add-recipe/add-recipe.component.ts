@@ -1,10 +1,23 @@
 import { Component, OnInit } from "@angular/core";
-import {FormGroup,FormBuilder,Validators,FormControl} from "@angular/forms";
+import {
+  FormGroup,
+  FormBuilder,
+  Validators,
+  FormControl
+} from "@angular/forms";
 import { Router } from "@angular/router";
 import { Observable } from "rxjs";
 import { map, startWith } from "rxjs/operators";
-import { IngredientsService,ingredient, ingredient_amount } from 'src/app/services/ingredients.service';
-import { RecipiesService, recipe, difficulty } from 'src/app/services/recipies.service';
+import {
+  IngredientsService,
+  ingredient,
+  ingredient_amount
+} from "src/app/services/ingredients.service";
+import {
+  RecipiesService,
+  recipe,
+  difficulty
+} from "src/app/services/recipies.service";
 
 export interface ingredient_with_amount {
   name: string;
@@ -33,7 +46,7 @@ export class AddRecipeComponent implements OnInit {
   Zutat: any;
   recipeName = "";
   recipeImageLink = "";
-  difficulty:any;
+  difficulty:number;
   description = "";
   requiredTime = 0;
 
@@ -72,6 +85,7 @@ export class AddRecipeComponent implements OnInit {
       difficulty: ["", Validators.required],
       recipeImageLink: ["", Validators.required]
     });
+
     this.form_ingredients = this._formBuilder.group({});
     this.form_thirdFormGroup = this._formBuilder.group({
       description: ["", Validators.required],
@@ -87,7 +101,7 @@ export class AddRecipeComponent implements OnInit {
 
   displayFn(ingredient?: ingredient): string | undefined {
     this.selected_ingredient = ingredient;
-    console.log(this.difficulties);
+    console.log(this.selected_ingredient);
     return ingredient ? ingredient.name : undefined;
   }
 
@@ -122,6 +136,11 @@ export class AddRecipeComponent implements OnInit {
     }
   }
 
+  set_difficulty(difficulty: any) {
+    this.difficulty = difficulty.value;
+    console.log(this.difficulty);
+  }
+
   add_recipe() {
     let ingredient_amount: ingredient_amount[] = [];
     let difficulty: difficulty;
@@ -130,30 +149,26 @@ export class AddRecipeComponent implements OnInit {
       ingredient_amount.push({ key: element.name, amount: +element.amount });
     });
 
-    console.log(this.difficulty);
-    console.log(this.recipeName);
-
+    //Due to call by reference, getting the real value from the difficulty array
     difficulty = this.recipeService.get_difficulties_byValue(this.difficulty);
-    console.log(difficulty);
 
-    if (difficulty != null) {
-      this.new_recipe = {
-        name: this.recipeName,
-        ingredients: ingredient_amount,
-        required_time: this.requiredTime,
-        description: this.description,
-        difficulty: difficulty,
-        image: this.recipeImageLink
-      };
-      let response = this.recipeService.add_recipe(this.new_recipe);
-      console.log("recipe was added");
+    this.new_recipe = {
+      name: this.recipeName,
+      ingredients: ingredient_amount,
+      required_time: this.requiredTime,
+      description: this.description,
+      difficulty: difficulty,
+      image: this.recipeImageLink
+    };
 
-      if (response == true) {
-        console.log("adding was successful");
+    let response = this.recipeService.add_recipe(this.new_recipe);
+    console.log("recipe was sent to dataservice");
 
-        this.display_stepper = false;
-        this.insert_successfull = true;
-      }
+    if (response == true) {
+      console.log("adding was successful");
+
+      this.display_stepper = false;
+      this.insert_successfull = true;
     }
   }
 
