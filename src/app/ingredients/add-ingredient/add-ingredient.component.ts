@@ -20,17 +20,21 @@ export class AddIngredientComponent {
     private ingredientService: IngredientsService,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
+    //Gather ingredient Data from the ingredientService
     this.ingredientService
       .get_allIngredients2DArray()
       .subscribe(item => (this.ingredients = item));
 
+    //Gather unit data from the ingredientService
     this.units = this.ingredientService.get_units();
   }
 
   onYesClick(name: any, unit: any, category: any) {
+    //Traverse all ingredient categories
     this.ingredients.forEach(element => {
+      //
       element.data.forEach(ing => {
-        if (/*ing.name == name*/ ing.name.match(name) !== null) {
+        if (ing.name.match(name) !== null) {
           this.status_code = "Ingredient already exists";
         }
       });

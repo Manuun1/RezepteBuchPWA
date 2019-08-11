@@ -27,14 +27,29 @@ export class BasketService {
     Basket.forEach(function(element) {
       tempIngredient = Ingredients.get(element.key);
 
-      res.push({
-        name: element.key,
-        amount: element.amount,
-        category: tempIngredient.category,
-        unit: tempIngredient.unit,
-        //Button is used, to be able to add a delete and edit button for each row in the basket table
-        button: ""
-      });
+      if(tempIngredient == undefined)
+      {
+        res.push({
+          name: element.key,
+          amount: element.amount,
+          category: "Andere",
+          unit: "Andere",
+          //Button is used, to be able to add a delete and edit button for each row in the basket table
+          button: ""
+        });
+      }
+      else{
+        res.push({
+          name: element.key,
+          amount: element.amount,
+          category: tempIngredient.category,
+          unit: tempIngredient.unit,
+          //Button is used, to be able to add a delete and edit button for each row in the basket table
+          button: ""
+        });
+      }
+
+      
     });
 
     return of(res);
@@ -81,5 +96,11 @@ export class BasketService {
         found_element.amount += ingredient.amount;
       }
     });
+  }
+
+  customItem_addToBasket(name:string,_amount:number){
+    console.log(_amount);
+    
+    Basket.push({key:name,amount:_amount});
   }
 }

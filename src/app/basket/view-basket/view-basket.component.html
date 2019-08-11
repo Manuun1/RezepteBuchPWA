@@ -64,6 +64,19 @@
           [pageSizeOptions]="[25, 50, 100]"
         ></mat-paginator>
       </div>
+
+      <h3>Zutatenfremde Artikel:</h3>
+      <mat-form-field>
+        <input matInput #name placeholder="Name" />
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="number" #amount placeholder="Anzahl" />
+      </mat-form-field>
+
+      <button mat-button class="mat-card-actions_buttons" (click)="addCustomItem(name.value, amount.value)">Fremde Zutat hinzufügen</button>
+
+      {{status_code}}
+      
     </mat-card-content>
   </mat-card>
 </div>

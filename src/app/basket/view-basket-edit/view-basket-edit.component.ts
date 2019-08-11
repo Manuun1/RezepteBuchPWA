@@ -18,6 +18,7 @@ export class ViewBasketEditComponent {
     console.log(data);
   }
 
+  //Close the material dialog
   onNoClick(): void {
     this.dialogRef.close();
   }
