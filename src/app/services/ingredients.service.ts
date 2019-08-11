@@ -83,6 +83,10 @@ export class IngredientsService {
     return Ingredients;
   }
 
+  get_units(){
+    return units;
+  }
+
   get_ingredient_data(name: string): ingredient {
     let selected_ingredient = Ingredients.get(name);
     return {
@@ -156,5 +160,23 @@ export class IngredientsService {
       } as ingredient);
     });
     return of(ingredients);
+  }
+
+  add_ingredient(name:string, unit:string, category:string):boolean{
+
+    console.log(name+"  "+unit+"  "+category+"  ")
+
+    let category_reference:any;
+
+    categories.forEach(function(elem){
+      if(elem == category)
+      {
+        category_reference=elem;
+      }
+    })
+
+    Ingredients.set(name,{ unit: unit, category: category_reference });
+    
+    return true;
   }
 }

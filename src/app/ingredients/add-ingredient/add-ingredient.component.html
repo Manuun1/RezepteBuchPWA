@@ -4,18 +4,35 @@
     <input matInput #name placeholder="Name" />
   </mat-form-field>
   <mat-form-field>
-    <input matInput #unit placeholder="Einheit" />
+    <mat-label>Einheit</mat-label>
+    <mat-select #unit>
+      <mat-option [value]="unit" *ngFor="let unit of units">
+        {{ unit }}</mat-option
+      >
+    </mat-select>
   </mat-form-field>
   <mat-form-field>
     <mat-label>Kategorie</mat-label>
-    <mat-select [(value)]="selected">
-      <mat-option [value]="ingredient.key" *ngFor="let ingredient of ingredients"> {{ingredient.key}}</mat-option>
+    <mat-select #ingredient [(value)]="selected">
+      <mat-option
+        [value]="ingredient.key"
+        *ngFor="let ingredient of ingredients"
+      >
+        {{ ingredient.key }}</mat-option
+      >
     </mat-select>
   </mat-form-field>
 </div>
+{{ status_code }}
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">
     <mat-icon>arrow_back</mat-icon>
+  </button>
+  <button
+    mat-button
+    (click)="onYesClick(name.value, unit.value, ingredient.value)"
+  >
+    Füge Zutat Hinzu
   </button>
   <button mat-button [mat-dialog-close]="data.row">Ok</button>
 </div>

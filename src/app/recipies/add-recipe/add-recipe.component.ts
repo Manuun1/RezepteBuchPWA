@@ -55,6 +55,7 @@ export class AddRecipeComponent implements OnInit {
 
   selected_ingredients: ingredient_with_amount[] = [];
   anzahl: number;
+  _difficulty="";
 
   error_code: string;
 
@@ -133,6 +134,7 @@ export class AddRecipeComponent implements OnInit {
 
   set_difficulty(difficulty: any) {
     this.difficulty = difficulty.value;
+    this._difficulty = difficulty.name;
     console.log(this.difficulty);
   }
 
