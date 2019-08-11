@@ -51,11 +51,7 @@ export class AddRecipeComponent implements OnInit {
   requiredTime = 0;
 
   filteredOptions: Observable<ingredient[]>;
-  selected_ingredient: ingredient = {
-    name: "select an ingredient",
-    unit: "select an ingredient",
-    category: "select an ingredient"
-  };
+  selected_ingredient="select an ingredient";
 
   selected_ingredients: ingredient_with_amount[] = [];
   anzahl: number;
@@ -100,7 +96,7 @@ export class AddRecipeComponent implements OnInit {
   }
 
   displayFn(ingredient?: ingredient): string | undefined {
-    this.selected_ingredient = ingredient;
+    this.selected_ingredient = ingredient.unit;
     console.log(this.selected_ingredient);
     return ingredient ? ingredient.name : undefined;
   }
@@ -113,7 +109,6 @@ export class AddRecipeComponent implements OnInit {
   }
 
   add_ingredient(zutat: any, anzahl: any) {
-    console.log(this.anzahl);
 
     let found: boolean = false;
 

@@ -67,7 +67,6 @@
                 placeholder="Zutat"
                 matInput
                 #Zutat
-                [value]="Zutat"
                 [matAutocomplete]="auto"
               />
               <mat-autocomplete
@@ -82,7 +81,7 @@
                 </mat-option>
               </mat-autocomplete>
             </mat-form-field>
-            {{ selected_ingredient.unit }}
+            {{ selected_ingredient }}
             <mat-form-field>
               <input
                 matInput
