@@ -61,6 +61,7 @@ export class AddRecipeComponent implements OnInit {
 
   new_recipe: recipe;
 
+  //Displaying of the stepper
   display_stepper: boolean = true;
   insert_successfull: boolean = false;
 
@@ -109,6 +110,7 @@ export class AddRecipeComponent implements OnInit {
     );
   }
 
+  //Add ingredient to the selected ingredients list in the second part of the stepper
   add_ingredient(zutat: any, anzahl: any) {
 
     let found: boolean = false;
@@ -139,9 +141,11 @@ export class AddRecipeComponent implements OnInit {
   }
 
   add_recipe() {
+    //Custom ingredient list to add to the new recipe
     let ingredient_amount: ingredient_amount[] = [];
     let difficulty: difficulty;
 
+    //+  is used to convert to number
     this.selected_ingredients.forEach(function(element) {
       ingredient_amount.push({ key: element.name, amount: +element.amount });
     });
@@ -149,6 +153,7 @@ export class AddRecipeComponent implements OnInit {
     //Due to call by reference, getting the real value from the difficulty array
     difficulty = this.recipeService.get_difficulties_byValue(this.difficulty);
 
+    //Create a new custom recipe to be added
     this.new_recipe = {
       name: this.recipeName,
       ingredients: ingredient_amount,
@@ -158,12 +163,14 @@ export class AddRecipeComponent implements OnInit {
       image: this.recipeImageLink
     };
 
+    //Send this new recipe to the dataservice 
     let response = this.recipeService.add_recipe(this.new_recipe);
     console.log("recipe was sent to dataservice");
 
     if (response == true) {
       console.log("adding was successful");
 
+      //hide the stepper
       this.display_stepper = false;
       this.insert_successfull = true;
     }

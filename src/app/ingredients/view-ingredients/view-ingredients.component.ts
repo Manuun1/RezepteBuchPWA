@@ -15,10 +15,12 @@ export class ViewIngredientsComponent implements OnInit {
   constructor(private ingredientsService: IngredientsService,private changedetectorref:ChangeDetectorRef,public dialog: MatDialog) { }
 
   ngOnInit() {
+    //Get all data from the dataservice
     this.ingredientsService.get_allIngredients2DArray().subscribe(item => this.ingredients=item);
     console.log(this.ingredients);
   }
 
+  //Open the Material Dialog 
   NewIngredient(): void {
     const dialogRef = this.dialog.open(AddIngredientComponent, {
       width: '350px',

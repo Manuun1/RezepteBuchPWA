@@ -45,7 +45,7 @@
           <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
             <mat-option
               *ngFor="let recipe of recipies"
-              [value]="option"
+              [value]="recipe"
               (optionSelected)="index_search_detail_navigation(recipe)"
             >
               {{ recipe.name }}

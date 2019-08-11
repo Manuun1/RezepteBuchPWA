@@ -32,30 +32,33 @@ export class AddIngredientComponent {
   onYesClick(name: any, unit: any, category: any) {
     //Traverse all ingredient categories
     this.ingredients.forEach(element => {
-      //
+      //Traverse all ingredients in the respective category
       element.data.forEach(ing => {
+        //Check if the ingredient already exists
         if (ing.name.match(name) !== null) {
-          this.status_code = "Ingredient already exists";
+          this.status_code = "Zutat existiert bereits";
         }
       });
     });
-
-    if (this.status_code != "Ingredient already exists") {
+    //If the ingredient exists do not add it!
+    if (this.status_code != "Zutat existiert bereits") {
       let response = this.ingredientService.add_ingredient(
         name,
         unit,
         category
       );
-
+      //If the response is true change the status code displayed on the page
       if (response == true) {
-        this.status_code = "Ingredient successfully added!";
+        this.status_code = "Zutat hinzugefügt! Bitte Komponente wechseln um anzuzeigen!";
       }
     }
+    //refresh data that was modified
     this.ingredientService
       .get_allIngredients2DArray()
       .subscribe(item => (this.ingredients = item));
   }
 
+  //Close the dialog!
   onNoClick(): void {
     this.dialogRef.close();
   }
