@@ -18,11 +18,7 @@
             </mat-form-field>
             <h3>Wie schwer ist die Zubereitung deines Rezeptes?</h3>
             <mat-form-field>
-              <mat-select
-                #difficulty
-                formControlName="difficulty"
-                
-              >
+              <mat-select #difficulty formControlName="difficulty">
                 <mat-option
                   *ngFor="let difficulty of difficulties"
                   [value]="difficulty"
@@ -177,7 +173,8 @@
         <mat-step>
           <ng-template matStepLabel class="stepper">Done</ng-template>
           <h2>Dein Rezept im Überblick</h2>
-          {{ recipeName }}
+          <h2>{{ recipeName }}</h2>
+          <br />
           <br />
           <img class="image_view" [src]="recipeImageLink" />
           <h3>Zutaten</h3>
