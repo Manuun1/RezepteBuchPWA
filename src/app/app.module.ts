@@ -17,7 +17,6 @@ import { ViewIngredientsComponent } from './ingredients/view-ingredients/view-in
 import { ContactComponent } from './page-components/contact/contact.component';
 import { PagenotfoundComponent } from './page-components/pagenotfound/pagenotfound.component';
 import { AddIngredientComponent } from './ingredients/add-ingredient/add-ingredient.component';
-import { AddItemBasketComponent } from './basket/add-item-basket/add-item-basket.component';
 
 
 @NgModule({
@@ -32,8 +31,7 @@ import { AddItemBasketComponent } from './basket/add-item-basket/add-item-basket
     ViewIngredientsComponent,
     ContactComponent,
     PagenotfoundComponent,
-    AddIngredientComponent,
-    AddItemBasketComponent
+    AddIngredientComponent
   ],
   imports: [
     BrowserModule,
